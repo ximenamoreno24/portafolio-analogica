@@ -40,7 +40,7 @@ a { color: var(--acc); text-decoration: none; transition: all 0.2s ease; }
 a:hover { color: var(--acc-dark); }
 
 h1, h2, h3, h4 { font-weight: 700; line-height: 1.18; letter-spacing: -0.025em; margin: 0; }
-h1 { font-size: clamp(34px, 4.6vw, 52px); }
+h1 { font-size: clamp(34px, 4.6vw, 50px); }
 h2 { font-size: clamp(26px, 3.2vw, 34px); }
 h3 { font-size: 18px; margin-bottom: 8px; }
 p { margin: 0 0 14px; max-width: 68ch; }
@@ -87,14 +87,17 @@ nav .wrap {
 }
 .nav-cta:hover { background: var(--acc); color: #fff; }
 
-/* HERO SIN FOTO DE PERFIL */
+/* HERO CON FOTO */
 .hero-sec {
-  padding: clamp(56px, 8vw, 96px) 0;
+  padding: clamp(48px, 7vw, 84px) 0;
   background: var(--mint-grad);
   border-bottom: 1px solid var(--rule);
 }
-.hero-single {
-  max-width: 780px;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
 }
 .hero-kicker {
   display: inline-block;
@@ -105,10 +108,10 @@ nav .wrap {
 }
 .hero-title span { color: var(--acc); }
 .hero-desc {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--mut);
-  margin: 18px 0 30px;
-  max-width: 60ch;
+  margin: 18px 0 28px;
+  max-width: 56ch;
 }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn-primary {
@@ -137,6 +140,42 @@ nav .wrap {
   gap: 8px;
 }
 .btn-outline:hover { border-color: var(--acc); color: var(--acc); }
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.foto-frame {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 4/5;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 6px solid #ffffff;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  place-items: center;
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--acc);
+  overflow: hidden;
+}
+.foto-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+.floating-pill {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: var(--shadow-md);
+  font-size: 13px;
+}
+.floating-pill strong { display: block; color: var(--ink); font-size: 14px; }
+.floating-pill span { color: var(--mut); }
 
 /* SECCIÓN SOBRE MÍ */
 .about-sec {
@@ -488,7 +527,9 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
 #lightbox p { padding: 14px 20px; margin: 0; font-size: 14px; text-align: center; color: var(--mut); }
 
 @media (max-width: 860px) {
-  .about-grid, .two-col { grid-template-columns: 1fr; }
+  .hero-grid, .about-grid, .two-col { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; justify-content: flex-start; }
+  .foto-frame { max-width: 240px; }
 }
 </style>
 </head>
@@ -507,16 +548,26 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
   </div>
 </nav>
 
-<!-- PORTADA SIN FOTO DE PERFIL -->
+<!-- PORTADA CON FOTO -->
 <section class="hero-sec">
-  <div class="wrap">
-    <div class="hero-single">
+  <div class="wrap hero-grid">
+    <div>
       <span class="hero-kicker">Ingeniería Electrónica · Universidad Surcolombiana</span>
       <h1 class="hero-title">Diseño Electrónico, <span>Simulación &amp; Hardware</span> Prototipado.</h1>
       <p class="hero-desc">Desarrollo de sistemas analógicos y mixtos desde el modelado matemático y el análisis circuital hasta el diseño de PCB, manufactura CNC y sistemas embebidos en PSoC 5LP.</p>
       <div class="hero-actions">
         <a href="#proyectos" class="btn-primary">Explorar Proyectos →</a>
         <a href="#sobre-mi" class="btn-outline">Sobre mí</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="foto-frame" id="foto">
+        <img src="img/perfil.jpeg" alt="Ximena del Rocío Moreno">
+      </div>
+      <div class="floating-pill">
+        <strong>Sexto Semestre</strong>
+        <span>Neiva, Huila · Colombia</span>
       </div>
     </div>
   </div>
