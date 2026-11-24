@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ximena del Rocío Moreno · Portafolio de Ingeniería Electrónica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-mint: #f2f8f6;
+  --mint-grad: linear-gradient(135deg, #ffffff 0%, #e7f3ef 55%, #d6ebe5 100%);
+  --surface: #ffffff;
+  --ink: #1b2422;
+  --mut: #647470;
+  --rule: #e2ece9;
+  --acc: #4c8879;
+  --acc-dark: #386b5e;
+  --acc-soft: #e6f2ef;
+  --shadow-sm: 0 4px 14px rgba(27, 36, 34, 0.04);
+  --shadow-md: 0 12px 30px rgba(76, 136, 121, 0.09);
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; min-width: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+  overflow-x: clip;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--acc); text-decoration: none; transition: all 0.2s ease; }
+a:hover { color: var(--acc-dark); }
+
+h1, h2, h3, h4 { font-weight: 700; line-height: 1.18; letter-spacing: -0.025em; margin: 0; }
+h1 { font-size: clamp(34px, 4.6vw, 50px); }
+h2 { font-size: clamp(26px, 3.2vw, 34px); }
+h3 { font-size: 18px; margin-bottom: 8px; }
+p { margin: 0 0 14px; max-width: 68ch; }
+
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 max(5vw, 20px); }
+.mono { font-family: "IBM Plex Mono", monospace; font-size: 0.9em; }
+
+/* NAVEGACIÓN */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  padding: 16px 0;
+}
+nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.brand span { color: var(--acc); font-size: 22px; line-height: 1; }
+.nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; }
+.nav-links a { color: var(--mut); }
+.nav-links a:hover { color: var(--acc); }
+.nav-cta {
+  background: var(--acc-soft);
+  color: var(--acc-dark);
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.nav-cta:hover { background: var(--acc); color: #fff; }
+
+/* HERO (ESTILO REFERENCIA VISUAL) */
+.hero-sec {
+  padding: clamp(48px, 7vw, 84px) 0;
+  background: var(--mint-grad);
+  border-bottom: 1px solid var(--rule);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.hero-kicker {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--acc);
+  margin-bottom: 12px;
+}
+.hero-title span { color: var(--acc); }
+.hero-desc {
+  font-size: 16px;
+  color: var(--mut);
+  margin: 18px 0 28px;
+  max-width: 56ch;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--acc);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 13px 24px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(76, 136, 121, 0.25);
+}
+.btn-primary:hover { background: var(--acc-dark); color: #fff; transform: translateY(-2px); }
+.btn-outline {
+  background: #ffffff;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 13px 24px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-outline:hover { border-color: var(--acc); color: var(--acc); }
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.foto-frame {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 4/5;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 6px solid #ffffff;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  place-items: center;
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--acc);
+  overflow: hidden;
+}
+.foto-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+.floating-pill {
+  position: absolute;
+  bottom: 20px;
+  left: -12px;
+  background: #ffffff;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: var(--shadow-md);
+  font-size: 13px;
+}
+.floating-pill strong { display: block; color: var(--ink); font-size: 14px; }
+.floating-pill span { color: var(--mut); }
+
+/* SECCIÓN SOBRE MÍ */
+.about-sec {
+  padding: 64px 0;
+  background: var(--bg);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 40px;
+  align-items: start;
+}
+.sec-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--acc);
+  margin-bottom: 8px;
+  display: block;
+}
+.about-card {
+  background: var(--bg-mint);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; margin: 16px 0 0; }
+.chips li {
+  background: #ffffff;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* TARJETAS RESUMEN DE INDICADORES */
+.metrics-sec { padding: 12px 0 48px; }
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+.metric-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.metric-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--acc);
+  box-shadow: var(--shadow-md);
+}
+.metric-card small { font-size: 12px; font-weight: 700; color: var(--acc); text-transform: uppercase; letter-spacing: 0.04em; }
+.metric-card strong { font-size: 16px; margin: 8px 0 14px; color: var(--ink); line-height: 1.35; }
+.metric-val { font-family: "IBM Plex Mono", monospace; font-size: 28px; font-weight: 600; color: var(--acc-dark); }
+.metric-card em { font-style: normal; font-size: 13px; color: var(--mut); margin-top: 6px; display: block; }
+
+/* SECCIÓN DE PROYECTOS */
+.proj-sec { padding: 56px 0; background: var(--bg-mint); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.proj-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  padding: clamp(24px, 4vw, 40px);
+  margin-bottom: 36px;
+  box-shadow: var(--shadow-sm);
+}
+.proj-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 24px;
+}
+.proj-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--acc-dark);
+  background: var(--acc-soft);
+  padding: 5px 12px;
+  border-radius: 99px;
+  margin-bottom: 10px;
+}
+
+.btn-doc {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--acc);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(76, 136, 121, 0.22);
+}
+.btn-doc:hover { background: var(--acc-dark); transform: translateY(-2px); color: #ffffff; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+.spec-list { margin: 0; display: grid; gap: 14px; }
+.spec-item { background: var(--bg-mint); padding: 16px 18px; border-radius: 12px; border: 1px solid var(--rule); }
+.spec-item dt { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--acc-dark); margin-bottom: 6px; letter-spacing: 0.04em; }
+.spec-item dd { margin: 0; font-size: 15px; }
+.spec-item ul { margin: 4px 0 0; padding-left: 18px; }
+
+.aporte-box {
+  background: #ffffff;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--acc);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+}
+.aporte-box h3 { color: var(--acc-dark); font-size: 15px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; }
+.aporte-box ul { margin: 0; padding-left: 18px; font-size: 15px; }
+.aporte-box li { margin-bottom: 8px; }
+
+/* TABS INTERACTIVOS */
+.tabs { display: flex; gap: 8px; border-bottom: 1px solid var(--rule); margin-bottom: 20px; flex-wrap: wrap; }
+.tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mut);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tab-btn:hover { color: var(--ink); }
+.tab-btn.active { color: var(--acc-dark); border-bottom-color: var(--acc); }
+.tab-panel { display: none; animation: fadeIn 0.25s ease; }
+.tab-panel.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.steps { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--acc-soft); margin-left: 8px; }
+.steps li { position: relative; padding: 0 0 16px 22px; }
+.steps li::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--acc);
+}
+
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+th { background: var(--bg-mint); font-weight: 600; color: var(--ink); }
+tr:last-child td { border-bottom: none; }
+td.n, th.n { text-align: right; font-family: "IBM Plex Mono", monospace; }
+
+/* GALERÍA */
+.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 24px; }
+figure { margin: 0; background: #ffffff; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+figure button { all: unset; cursor: zoom-in; display: block; width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+figure img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+figure:hover img { transform: scale(1.03); }
+figure.fit img { object-fit: contain; background: #fff; }
+figcaption { font-size: 13px; color: var(--mut); padding: 10px 12px; line-height: 1.4; }
+
+.refl-box {
+  margin-top: 24px;
+  background: var(--bg-mint);
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--rule);
+}
+.refl-box h4 { font-size: 13px; color: var(--acc-dark); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+.refl-box p { margin: 0; font-size: 15px; }
+
+/* SECCIÓN EQUIPO DE TRABAJO EN RECUADROS (TIPO TARJETAS DE PROYECTOS/IMÁGENES) */
+.team-sec { padding: 64px 0; background: var(--bg); }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+.member-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.member-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--acc);
+}
+.member-avatar {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: var(--mint-grad);
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--acc-dark);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+.member-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.member-info { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.member-role {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--acc);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.member-info h3 { font-size: 17px; margin-bottom: 8px; color: var(--ink); }
+.member-info p { font-size: 14px; color: var(--mut); margin: 0; line-height: 1.55; }
+
+/* SECCIÓN DE CONTACTO AL FINAL (TARJETAS LIMPIAS COMO TU IMAGEN) */
+.contact-sec {
+  padding: 64px 0;
+  background: var(--bg-mint);
+  border-top: 1px solid var(--rule);
+}
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+.c-card {
+  background: #ffffff;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, border-color 0.2s;
+}
+.c-card:hover { transform: translateY(-3px); border-color: var(--acc); }
+.c-card span {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mut);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+.c-card a, .c-card strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  word-break: break-word;
+}
+.c-card a:hover { color: var(--acc); }
+
+footer {
+  background: #ffffff;
+  border-top: 1px solid var(--rule);
+  padding: 28px 0;
+  text-align: center;
+  color: var(--mut);
+  font-size: 14px;
+}
+
+/* LIGHTBOX */
+dialog {
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 0;
+  max-width: min(860px, 92vw);
+  background: #ffffff;
+  color: var(--ink);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+}
+dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px); }
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--rule);
+}
+.close-btn {
+  background: var(--bg-mint);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.close-btn:hover { background: var(--acc); color: #fff; }
+#lightbox img { max-height: 76vh; width: auto; margin: 0 auto; }
+#lightbox p { padding: 14px 20px; margin: 0; font-size: 14px; text-align: center; color: var(--mut); }
+
+@media (max-width: 860px) {
+  .hero-grid, .about-grid, .two-col { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; justify-content: flex-start; }
+  .foto-frame { max-width: 240px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="brand">Ximena Moreno<span>.</span></a>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="#contacto" class="nav-cta">Contactar</a>
+  </div>
+</nav>
+
+<!-- PORTADA LIMPIA SIN DATOS DE CONTACTO -->
+<section class="hero-sec">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="hero-kicker">Ingeniería Electrónica · Universidad Surcolombiana</span>
+      <h1 class="hero-title">Diseño Electrónico, <span>Simulación &amp; Hardware</span> Prototipado.</h1>
+      <p class="hero-desc">Portafolio técnico de proyectos en Electrónica Analógica III: desde el modelado matemático y análisis circuital hasta el diseño de PCB, manufactura CNC y sistemas embebidos en PSoC 5LP.</p>
+      <div class="hero-actions">
+        <a href="#proyectos" class="btn-primary">Explorar Proyectos →</a>
+        <a href="#sobre-mi" class="btn-outline">Sobre mí</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="foto-frame" id="foto">
+        <!-- Si tienes foto, reemplaza XM por: <img src="img/perfil.jpg" alt="Ximena del Rocío Moreno"> -->
+        XM
+      </div>
+      <div class="floating-pill">
+        <strong>Sexto Semestre</strong>
+        <span>Neiva, Huila · Colombia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN SOBRE MÍ -->
+<section class="about-sec" id="sobre-mi">
+  <div class="wrap about-grid">
+    <div>
+      <span class="sec-label">Perfil Profesional</span>
+      <h2>Sobre mí</h2>
+      <p style="margin-top:14px;">Soy <strong>Ximena del Rocío Moreno</strong>, estudiante de sexto semestre de Ingeniería Electrónica en la Universidad Surcolombiana. Mi enfoque profesional está orientado a llevar sistemas electrónicos desde la validación teórica y la simulación hasta la implementación en hardware funcional y probado en laboratorio.</p>
+      <p>Cuento con experiencia práctica en modelado matemático mediante <strong>MATLAB y Simulink</strong>, análisis y simulación de circuitos analógicos y mixtos en <strong>Multisim y Proteus</strong>, programación de microcontroladores y arquitecturas <strong>PSoC 5LP</strong>, así como en el diseño esquemático, ruteo y fabricación física de circuitos impresos (PCB) en CNC.</p>
+    </div>
+
+    <div class="about-card">
+      <h3>Stack Técnico y Herramientas</h3>
+      <p class="mut" style="font-size:14px;">Software, plataformas de desarrollo e instrumentación utilizada en el ciclo de ingeniería:</p>
+      <ul class="chips">
+        <li>Multisim &amp; Proteus</li>
+        <li>MATLAB &amp; Simulink</li>
+        <li>PSoC Creator · PSoC 5LP (C)</li>
+        <li>EasyEDA (Esquemático &amp; PCB)</li>
+        <li>FlatCAM &amp; Mach3 (Fresado CNC)</li>
+        <li>Diseño para Manufactura (JLCPCB)</li>
+        <li>Osciloscopio &amp; Generador de Señales</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TARJETAS DE INDICADORES CLAVE -->
+<section class="metrics-sec" aria-label="Indicadores clave de diseño">
+  <div class="wrap metrics-grid">
+    <a class="metric-card" href="#calentamiento">
+      <small>Acondicionamiento Analógico</small>
+      <strong>Amplificador y generador con LM358</strong>
+      <div>
+        <div class="metric-val">292 kHz</div>
+        <em>Ancho de banda medido a ganancia 10 (meta ≥ 250 kHz)</em>
+      </div>
+    </a>
+    <a class="metric-card" href="#adc">
+      <small>Adquisición de Datos</small>
+      <strong>Latencia de conversión ADC en PSoC 5LP</strong>
+      <div>
+        <div class="metric-val">18,6 µs</div>
+        <em>Conversión SAR a 12 bits y 1 MHz medida en osciloscopio</em>
+      </div>
+    </a>
+    <a class="metric-card" href="#pmv">
+      <small>Prototipado Funcional (PMV)</small>
+      <strong>Shield de monitoreo de CO para PSoC 5LP</strong>
+      <div>
+        <div class="metric-val">+1,75 V</div>
+        <em>Excursión de señal ante presencia de gas con alerta visual</em>
+      </div>
+    </a>
+    <a class="metric-card" href="#gasshield">
+      <small>Diseño para Manufactura (DFM)</small>
+      <strong>GasShield 5LP optimizado para JLCPCB</strong>
+      <div>
+        <div class="metric-val">USD 15,65</div>
+        <em>Costo de ensamblaje SMD bajo presupuesto sin cupón</em>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- SECCIÓN DE PROYECTOS -->
+<main id="proyectos" class="proj-sec">
+  <div class="wrap">
+
+    <!-- PROYECTO 1 -->
+    <article class="proj-card" id="calentamiento">
+      <div class="proj-header">
+        <div>
+          <span class="proj-tag">Práctica de Caracterización Analógica</span>
+          <h2>Amplificador de ganancia 10 y generador de funciones con LM358</h2>
+        </div>
+        <!-- ENLACE AL DOCUMENTO PDF O GOOGLE DRIVE -->
+        <a href="docs/documentacion-lm358.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+      </div>
+
+      <p>Caracterización experimental del amplificador operacional LM358 en dos configuraciones: una topología amplificadora con ganancia de voltaje de 10 y ancho de banda mínimo de 250 kHz, y un oscilador generador de ondas triangular y cuadrada basado en notas de aplicación del fabricante.</p>
+
+      <div class="two-col">
+        <dl class="spec-list">
+          <div class="spec-item">
+            <dt>Objetivo Técnico</dt>
+            <dd>Diseñar, implementar y caracterizar un amplificador con A<sub>v</sub> = 10 y f<sub>c</sub> ≥ 250 kHz, determinando además el rango operativo del generador con amplitud ≥ 70 % del valor ideal.</dd>
+          </div>
+          <div class="spec-item">
+            <dt>Metas de Diseño</dt>
+            <dd>
+              <ul>
+                <li>Validar mediante el producto ganancia-ancho de banda (GBW) la inviabilidad de una etapa única.</li>
+                <li>Mantener el error de ganancia por debajo de la tolerancia nominal de los resistores.</li>
+                <li>Alcanzar una frecuencia de corte superior por encima de 250 kHz.</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="aporte-box">
+          <h3>Contribución Técnica</h3>
+          <ul>
+            <li>Análisis comparativo de hojas de datos (Texas Instruments: 0,7 MHz; onsemi: 1,0 MHz; STMicroelectronics: 1,1 MHz) y modelado del ancho de banda en cascada (criterio de Jaeger y Blalock).</li>
+            <li>Sustentación teórica para descartar la etapa única (limitada a 70–110 kHz) y definir una arquitectura de tres etapas no inversoras con ganancia individual ≈ 2,15.</li>
+            <li>Estructuración del plan de pruebas y distribución técnica de actividades en el equipo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(this, 'p1-proc')">Proceso y Evolución</button>
+        <button class="tab-btn" onclick="switchTab(this, 'p1-prob')">Diagnóstico y Soluciones</button>
+        <button class="tab-btn" onclick="switchTab(this, 'p1-res')">Resultados Experimentales</button>
+      </div>
+
+      <div id="p1-proc" class="tab-panel active">
+        <ol class="steps">
+          <li><b>Análisis teórico:</b> Con una etapa única de ganancia 10, el ancho de banda queda restringido a 70–110 kHz; a 250 kHz la ganancia en lazo abierto cae a 2,8–4,4.</li>
+          <li><b>Dimensionamiento:</b> Implementación de tres etapas no inversoras con R<sub>g</sub> = 10 kΩ y resistencias de realimentación R<sub>f</sub> de 12 kΩ, 12 kΩ y 10,68 kΩ (10 kΩ + 680 Ω), logrando una ganancia teórica de 10,01.</li>
+          <li><b>Barrido en frecuencia:</b> Excitación con señal sinusoidal de 20 mV<sub>pp</sub> desde 1 kHz hasta 500 kHz, registrando amplitud mediante cursores manuales.</li>
+          <li><b>Caracterización del oscilador:</b> Montaje con V<sub>ref</sub> = 5 V mediante divisor resistivo y ajuste de frecuencia con potenciómetro de 1 MΩ.</li>
+        </ol>
+      </div>
+
+      <div id="p1-prob" class="tab-panel">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Incidencia Detectada</th><th>Causa Raíz</th><th>Acción Correctiva</th></tr></thead>
+            <tbody>
+              <tr><td>Ancho de banda insuficiente en etapa única</td><td>Limitación por GBW del LM358 (0,7 a 1,1 MHz)</td><td>Distribución de ganancia en tres etapas en cascada</td></tr>
+              <tr><td>Sobreestimación en lectura automática de V<sub>pp</sub> (24 mV vs 20 mV)</td><td>Ruido térmico y de fuente superpuesto en señales de baja amplitud</td><td>Medición directa mediante cursores del osciloscopio</td></tr>
+              <tr><td>Desviación de frecuencia (36 % a 56 %) en el generador sobre 2 kHz</td><td>Efecto del slew-rate y capacitancias parásitas del montaje</td><td>Documentación de la curva de desviación para compensación futura</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="p1-res" class="tab-panel">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Parámetro</th><th class="n">Valor Esperado</th><th class="n">Valor Medido</th></tr></thead>
+            <tbody>
+              <tr><td>Ganancia en banda media</td><td class="n">10,01</td><td class="n">10,10 (error 0,9 %)</td></tr>
+              <tr><td>Frecuencia de corte superior (-3 dB)</td><td class="n">≥ 250 kHz</td><td class="n">≈ 292 kHz</td></tr>
+              <tr><td>Atenuación a 250 kHz</td><td class="n">≤ −3,0 dB</td><td class="n">−2,1 dB</td></tr>
+              <tr><td>GBW efectivo ajustado al modelo</td><td class="n">0,7 – 1,1 MHz</td><td class="n">≈ 1,25 MHz</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="gal">
+        <figure><button onclick="openImg(this)"><img src="img/cal-protoboard.jpg" alt="Amplificador de tres etapas en protoboard" loading="lazy"></button><figcaption>Montaje en cascada de tres etapas con circuitos integrados LM358.</figcaption></figure>
+        <figure><button onclick="openImg(this)"><img src="img/cal-osc-1k.jpg" alt="Entrada y salida a 1 kHz" loading="lazy"></button><figcaption>Respuesta en banda media (1 kHz): entrada vs. salida.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/cal-bode.jpg" alt="Respuesta en frecuencia medida" loading="lazy"></button><figcaption>Curva de ganancia experimental frente al modelo con GBW = 1,25 MHz.</figcaption></figure>
+        <figure><button onclick="openImg(this)"><img src="img/cal-generador.jpg" alt="Generador de funciones" loading="lazy"></button><figcaption>Implementación del oscilador de onda triangular y cuadrada.</figcaption></figure>
+      </div>
+
+      <div class="refl-box">
+        <h4>Análisis Crítico</h4>
+        <p>Las especificaciones de hoja de datos representan rangos estadísticos de manufactura. El prototipo superó el umbral de 250 kHz debido a que el integrado evaluado presentó un GBW efectivo cercano a 1,25 MHz; bajo el peor caso especificado por el fabricante (0,7 MHz), la frecuencia de corte habría caído a ≈ 166 kHz, evidenciando la necesidad de diseñar siempre con márgenes de peor caso.</p>
+      </div>
+    </article>
+
+    <!-- PROYECTO 2 -->
+    <article class="proj-card" id="adc">
+      <div class="proj-header">
+        <div>
+          <span class="proj-tag">Instrumentación y Sistemas Embebidos</span>
+          <h2>ADC y potenciómetro: tiempo de conversión en la PSoC 5LP</h2>
+        </div>
+        <a href="docs/documentacion-adc-psoc.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+      </div>
+
+      <p>Caracterización temporal de los convertidores analógico-digitales integrados en la arquitectura PSoC 5LP (kit CY8CKIT-059). Se evaluó el tiempo real de conversión comparando la topología SAR (aproximaciones sucesivas) frente a la Delta-Sigma bajo distintas resoluciones y frecuencias de reloj.</p>
+
+      <div class="two-col">
+        <dl class="spec-list">
+          <div class="spec-item">
+            <dt>Planteamiento Técnico</dt>
+            <dd>Determinar cómo la resolución en bits y la arquitectura interna del ADC condicionan la latencia de conversión y la tasa efectiva de muestreo.</dd>
+          </div>
+          <div class="spec-item">
+            <dt>Metas de Diseño</dt>
+            <dd>
+              <ul>
+                <li>Generar disparos de conversión (SOC) por hardware para aislar la latencia de ejecución de la CPU.</li>
+                <li>Medir el intervalo exacto entre inicio (SOC) y fin de conversión (EOC) en osciloscopio.</li>
+                <li>Contrastar las mediciones físicas contra los tiempos teóricos de PSoC Creator.</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="aporte-box">
+          <h3>Contribución Técnica</h3>
+          <ul>
+            <li>Desarrollo completo del diseño hardware/firmware en PSoC Creator: configuración del <span class="mono">TopDesign</span> para el ADC SAR disparado por PWM (pulsos de 2 µs cada 100 µs), arquitectura Delta-Sigma y programación en lenguaje C (<span class="mono">main.c</span>).</li>
+            <li>Estandarización del protocolo de medición temporal: enrutamiento de señales internas SOC y EOC hacia pines físicos para captura mediante cursores y función <span class="mono">Delay(f-r)</span> en resoluciones altas.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(this, 'p2-proc')">Proceso y Evolución</button>
+        <button class="tab-btn" onclick="switchTab(this, 'p2-prob')">Diagnóstico y Soluciones</button>
+      </div>
+
+      <div id="p2-proc" class="tab-panel active">
+        <ol class="steps">
+          <li><b>Caracterización SAR por resolución:</b> A reloj fijo de 1 MHz, los tiempos medidos fueron 14,6 µs (8 bits), 16,6 µs (10 bits) y 18,6 µs (12 bits), verificando la relación teórica de N = 6 + bits ciclos de reloj.</li>
+          <li><b>Barrido de frecuencia de reloj:</b> Evaluación entre 1,0 MHz y 1,6 MHz en pasos de 0,1 MHz, manteniendo constante la cantidad de ciclos por conversión (14,3 a 18,5 ciclos promedio).</li>
+          <li><b>Verificación del divisor de reloj:</b> Enrutamiento del reloj interno a un pin de salida, detectando desviaciones entre 0,20 % y 2,76 % debidas al divisor entero del sistema.</li>
+          <li><b>Evaluación Delta-Sigma:</b> Latencia estable cercana a 100 µs entre 8 y 16 bits, escalando a 415 µs en 18 bits y 5,634 ms en 20 bits (desviación de apenas 0,3 % frente al estimador del IDE).</li>
+        </ol>
+      </div>
+
+      <div id="p2-prob" class="tab-panel">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Incidencia Detectada</th><th>Causa Raíz</th><th>Acción Correctiva</th></tr></thead>
+            <tbody>
+              <tr><td>Pérdida de precisión con cursores manuales a 18 y 20 bits</td><td>Incremento exponencial del periodo de conversión Delta-Sigma</td><td>Uso de medición estadística automática <span class="mono">Delay(f-r)</span></td></tr>
+              <tr><td>Diferencia entre frecuencia de reloj configurada y real</td><td>Cuantización por divisores enteros del árbol de reloj de la PSoC</td><td>Referencia de cálculos sobre la frecuencia medida en pin</td></tr>
+              <tr><td>Tasa equivalente de 109,9 ksps a 1,6 MHz (8 bits) sobre el límite nominal de 100 ksps</td><td>Ambigüedad en hoja de datos respecto al límite en resoluciones reducidas</td><td>Registro documentado del comportamiento observado</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="gal">
+        <figure><button onclick="openImg(this)"><img src="img/adc-montaje.jpg" alt="Montaje PSoC 5LP" loading="lazy"></button><figcaption>Banco de pruebas con kit CY8CKIT-059 y divisor potenciométrico de 10 kΩ.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/adc-osc.jpg" alt="Osciloscopio SOC y EOC" loading="lazy"></button><figcaption>Medición de latencia Δt entre señales SOC y EOC a 12 bits.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/adc-barrido.jpg" alt="Gráfica SAR" loading="lazy"></button><figcaption>Comportamiento de latencia del ADC SAR frente al reloj del sistema.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/adc-delsig.jpg" alt="Gráfica Delta-Sigma" loading="lazy"></button><figcaption>Curva de tiempo de conversión Delta-Sigma según resolución.</figcaption></figure>
+      </div>
+
+      <div class="refl-box">
+        <h4>Análisis Crítico</h4>
+        <p>El enrutamiento de señales internas de control (SOC/EOC) directamente por hardware permitió aislar el comportamiento físico del silicio frente a cualquier latencia introducida por interrupciones o ciclos de instrucción de la CPU, logrando mediciones deterministas de alta repetibilidad.</p>
+      </div>
+    </article>
+
+    <!-- PROYECTO 3 -->
+    <article class="proj-card" id="pmv">
+      <div class="proj-header">
+        <div>
+          <span class="proj-tag">Desarrollo de Prototipo Funcional (PMV)</span>
+          <h2>Shield de monitoreo de CO para PSoC 5LP</h2>
+        </div>
+        <a href="docs/documentacion-shield-co.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+      </div>
+
+      <p>Solución electrónica diseñada para el Laboratorio de Aguas de Ingeniería de Petróleos, donde los procesos de calcinación de biomasa generan monóxido de carbono (CO), un gas incoloro e inodoro de alto riesgo. Se desarrolló una tarjeta de expansión (shield) que gestiona el ciclo térmico de un sensor MQ-7, acondiciona su señal hacia el ADC de la PSoC 5LP y proporciona alerta visual mediante semáforo LED.</p>
+
+      <div class="two-col">
+        <dl class="spec-list">
+          <div class="spec-item">
+            <dt>Objetivo Técnico</dt>
+            <dd>Desarrollar un Producto Mínimo Viable (PMV) autónomo que opere el sensor MQ-7 sin sobrecargar los reguladores del kit PSoC y alerte niveles críticos de CO.</dd>
+          </div>
+          <div class="spec-item">
+            <dt>Requisitos de Diseño</dt>
+            <dd>
+              <ul>
+                <li><b>R1:</b> Etapa de potencia externa de 5 V independiente del microcontrolador.</li>
+                <li><b>R2:</b> Conmutación térmica del calefactor: 5 V durante 60 s (purga) y 1,4 V durante 90 s (sensado).</li>
+                <li><b>R3:</b> Variación de voltaje mínima de 0,5 V ante exposición a monóxido de carbono.</li>
+                <li><b>R4:</b> Sistema de indicación visual escalonado (verde, amarillo, rojo).</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="aporte-box">
+          <h3>Contribución Técnica</h3>
+          <ul>
+            <li>Diseño esquemático en EasyEDA y ruteo completo de tarjeta impresa monocapa (80 × 50 mm), optimizando ancho de pistas (0,8 mm) y aislamiento para maquinado CNC.</li>
+            <li>Manufactura integral de la PCB: generación de archivos Gerber, procesamiento CAM en FlatCAM, control numérico en Mach3 (fresado de aislamiento con herramienta de 0,1 mm a 30° y 45 perforaciones de 0,75 mm).</li>
+            <li>Desarrollo del firmware en PSoC Creator, validación eléctrica en banco, pruebas funcionales de respuesta ante combustión controlada y estructuración de la documentación técnica.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(this, 'p3-proc')">Proceso y Evolución</button>
+        <button class="tab-btn" onclick="switchTab(this, 'p3-prob')">Diagnóstico y Soluciones</button>
+        <button class="tab-btn" onclick="switchTab(this, 'p3-res')">Validación en PCB</button>
+      </div>
+
+      <div id="p3-proc" class="tab-panel active">
+        <ol class="steps">
+          <li><b>Selección de topología de potencia:</b> Se descartó el regulador lineal LM317 (requiere V<sub>in</sub> > 7 V) y la modulación PWM directa (induce ruido de conmutación en el ADC). Se implementó una etapa con transistor BJT 2N2222A y resistor limitador de 82 Ω que forma un divisor resistivo con los 33 Ω del calefactor para fijar ≈ 1,43 V en fase baja.</li>
+          <li><b>Validación en protoboard:</b> Línea base estable en aire limpio entre 0,925 V y 0,941 V; excursión hasta 3,230 V ante exposición controlada con activación inmediata de alerta roja.</li>
+          <li><b>Fabricación de baquela:</b> Fresado CNC de placa monocapa, soldadura de componentes e integración de zócalo adaptador impreso en 3D para mantenimiento del sensor.</li>
+          <li><b>Calibración y firmware:</b> Ajuste de resistencia base R<sub>0</sub> = R<sub>s</sub>(aire)/27,5 según curva de sensibilidad del fabricante, rutina de autocalibración inicial y umbrales de alerta alineados con directrices de la OMS (30 ppm alerta preventiva, 87 ppm alerta crítica).</li>
+        </ol>
+      </div>
+
+      <div id="p3-prob" class="tab-panel">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Incidencia Detectada</th><th>Causa Raíz</th><th>Acción Correctiva</th></tr></thead>
+            <tbody>
+              <tr><td>Indicador verde encendido permanentemente en protoboard</td><td>Referencia de emisor del transistor Q1 flotante</td><td>Conexión sólida del nodo de emisor al plano de tierra (GND)</td></tr>
+              <tr><td>Lectura inicial de ≈ 99 ppm en atmósfera limpia</td><td>Asunción de R<sub>0</sub> = R<sub>s</sub> en aire sin factor de escala de hoja de datos</td><td>Incorporación del factor de normalización R<sub>0</sub> = R<sub>s</sub>(aire)/27,5</td></tr>
+              <tr><td>Saturación en alerta amarilla sin alcanzar umbral rojo en pruebas</td><td>Umbrales iniciales (35 y 100 ppm) poco sensibles para prototipo sin gas patrón</td><td>Ajuste a umbrales normativos OMS (30 ppm y 87 ppm)</td></tr>
+              <tr><td>Atenuación temporal de sensibilidad tras recubrimiento protector</td><td>Adsorción de solventes de laca dieléctrica en la malla catalítica del MQ-7</td><td>Ciclo térmico de curado y protocolo de barnizado previo al montaje del sensor</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="p3-res" class="tab-panel">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Requisito</th><th>Parámetro Evaluado</th><th class="n">Especificación</th><th class="n">Medición PCB</th></tr></thead>
+            <tbody>
+              <tr><td>R1</td><td>Consumo de corriente (purga / sensado)</td><td class="n">≤ 200 mA</td><td class="n">140,2 / 47,5 mA</td></tr>
+              <tr><td>R2</td><td>Tensión calefactor fase alta</td><td class="n">4,7 ± 0,3 V</td><td class="n">4,59 V</td></tr>
+              <tr><td>R2</td><td>Tensión calefactor fase baja</td><td class="n">1,4 ± 0,1 V</td><td class="n">1,39 V</td></tr>
+              <tr><td>R2</td><td>Temporización de ciclo térmico</td><td class="n">60 s / 90 s</td><td class="n">≈ 60 s / ≈ 90 s</td></tr>
+              <tr><td>R3</td><td>Excursión de voltaje ante gas</td><td class="n">≥ 0,5 V</td><td class="n">+1,75 V</td></tr>
+              <tr><td>R4</td><td>Activación de semáforo de alerta</td><td class="n">Transición a rojo</td><td class="n">Activación en ≈ 10 s</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="gal">
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p4-esquematico.jpg" alt="Esquemático EasyEDA" loading="lazy"></button><figcaption>Diagrama esquemático desarrollado en EasyEDA.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p4-layout.jpg" alt="Layout PCB" loading="lazy"></button><figcaption>Ruteo monocapa (80 × 50 mm) optimizado para fresado CNC.</figcaption></figure>
+        <figure><button onclick="openImg(this)"><img src="img/p4-cnc.jpg" alt="Fresado CNC" loading="lazy"></button><figcaption>Proceso de maquinado de pistas por aislamiento en CNC.</figcaption></figure>
+        <figure><button onclick="openImg(this)"><img src="img/p4-fresada.jpg" alt="Placa fresada" loading="lazy"></button><figcaption>Sustrato de baquelita fresado y perforado.</figcaption></figure>
+        <figure><button onclick="openImg(this)"><img src="img/p4-soldada.jpg" alt="Placa ensamblada" loading="lazy"></button><figcaption>Prototipo ensamblado con adaptador mecánico para el sensor.</figcaption></figure>
+        <figure><button onclick="openImg(this)"><img src="img/p4-mediciones.jpg" alt="Mediciones eléctricas" loading="lazy"></button><figcaption>Verificación de niveles de tensión y corriente en las etapas del calefactor.</figcaption></figure>
+        <figure><button onclick="openImg(this)"><img src="img/p4-humo.jpg" alt="Prueba funcional" loading="lazy"></button><figcaption>Validación de respuesta del semáforo LED ante emisión controlada.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p4-grafica.jpg" alt="Telemetría serie" loading="lazy"></button><figcaption>Adquisición de datos por puerto serie mostrando cruce de umbrales.</figcaption></figure>
+      </div>
+
+      <div class="refl-box">
+        <h4>Análisis Crítico</h4>
+        <p>Integrar el flujo completo desde la captura esquemática hasta el fresado CNC permitió comprender la interacción directa entre el diseño físico (ancho de pistas, retornos de corriente y aislamiento) y la estabilidad de las mediciones analógicas de bajo nivel en sensores químicos.</p>
+      </div>
+    </article>
+
+    <!-- PROYECTO 4 -->
+    <article class="proj-card" id="gasshield">
+      <div class="proj-header">
+        <div>
+          <span class="proj-tag">Ingeniería de Producto y Diseño para Manufactura (DFM)</span>
+          <h2>GasShield 5LP: optimización industrial para ensamblaje SMD</h2>
+        </div>
+        <a href="docs/documentacion-gasshield.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+      </div>
+
+      <p>A partir del prototipo funcional validado en la etapa previa, se rediseñó la arquitectura electrónica para escalarla hacia un estándar de fabricación industrial de doble capa con ensamblaje automatizado SMD (JLCPCB), cumpliendo un techo presupuestal estricto de USD 20 por lote sin depender de cupones promocionales.</p>
+
+      <div class="two-col">
+        <dl class="spec-list">
+          <div class="spec-item">
+            <dt>Objetivo Técnico</dt>
+            <dd>Migrar el prototipo monocapa hacia una PCB profesional de dos capas con ensamblaje superficial (SMT), solventando limitaciones térmicas y de escalabilidad del diseño inicial.</dd>
+          </div>
+          <div class="spec-item">
+            <dt>Metas de Ingeniería</dt>
+            <dd>
+              <ul>
+                <li>Verificación eléctrica (ERC) y de reglas de diseño (DRC) con cero errores.</li>
+                <li>Regulación de fase alta del calefactor en 5,0 ± 0,1 V mediante conmutación de baja caída.</li>
+                <li>Costo total de fabricación y ensamblaje inferior a USD 20 sin subsidios.</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="aporte-box">
+          <h3>Contribución Técnica</h3>
+          <ul>
+            <li>Estructuración de la trazabilidad de ingeniería mediante una matriz de 24 modificaciones técnicas (M-01 a M-24), vinculando cada limitación del prototipo previo con su solución de diseño y evidencia de validación.</li>
+            <li>Gestión de ingeniería de costos y análisis DFM en JLCPCB: optimización de lista de materiales (BOM), migración de componentes <i>Extended</i> a catálogo <i>Basic</i> y evaluación financiera entre las revisiones 2.0 y 2.1.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(this, 'p4-proc')">Evolución de Ingeniería</button>
+        <button class="tab-btn" onclick="switchTab(this, 'p4-res')">Comparativa de Versiones</button>
+      </div>
+
+      <div id="p4-proc" class="tab-panel active">
+        <ol class="steps">
+          <li><b>Arquitectura Revisión 2.0:</b> Sustitución del BJT por MOSFET canal N AO3400A de baja resistencia R<sub>DS(on)</sub> para evitar caídas de tensión en fase alta, incorporación de segundo canal de sensado, zumbador piezoeléctrico, bus I2C para pantalla LCD, selector de modo y protección por fusible.</li>
+          <li><b>Optimización de costos (Revisión 2.1):</b> El análisis de cotización reveló que los cargos de carga de alimentadores por piezas <i>Extended</i> representaban el 41 % del costo total (USD 29,98).</li>
+          <li><b>Estandarización BOM:</b> Reemplazo de componentes especiales por equivalentes del inventario <i>Basic</i> de JLCPCB: arreglo de tres resistores 0805 en paralelo para la etapa de potencia en fase baja, carga fija de 24,2 kΩ y bornera de alimentación VIN estándar, reduciendo el costo final a <b>USD 15,65</b>.</li>
+        </ol>
+      </div>
+
+      <div id="p4-res" class="tab-panel">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Criterio de Diseño</th><th class="n">Prototipo CNC (v1.0)</th><th class="n">Industrial (v2.0)</th><th class="n">Optimizada BOM (v2.1)</th></tr></thead>
+            <tbody>
+              <tr><td>Tecnología de fabricación</td><td class="n">1 capa fresada</td><td class="n">2 capas FR-4</td><td class="n">2 capas FR-4</td></tr>
+              <tr><td>Canales de monitoreo CO</td><td class="n">1 sensor</td><td class="n">2 sensores</td><td class="n">2 sensores</td></tr>
+              <tr><td>Conmutación de calefactor</td><td class="n">BJT 2N2222A</td><td class="n">MOSFET AO3400A</td><td class="n">MOSFET AO3400A</td></tr>
+              <tr><td>Componentes Extended en BOM</td><td class="n">N/A (THT manual)</td><td class="n">18 referencias</td><td class="n">0 referencias</td></tr>
+              <tr><td>Costo estimado de lote (JLCPCB)</td><td class="n">Manufactura local</td><td class="n">USD 29,98</td><td class="n">USD 15,65</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="gal">
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-esquematico.jpg" alt="Esquemático v2.1" loading="lazy"></button><figcaption>Esquemático final v2.1 con componentes estandarizados del catálogo Basic.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-pcb2d.jpg" alt="PCB 2D" loading="lazy"></button><figcaption>Ruteo de doble capa con planos de tierra y serigrafía industrial.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-3d.jpg" alt="Render 3D" loading="lazy"></button><figcaption>Modelo tridimensional del shield ensamblado.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-cotizacion.jpg" alt="Cotización JLCPCB" loading="lazy"></button><figcaption>Validación de costos en plataforma de manufactura JLCPCB (USD 15,65).</figcaption></figure>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<!-- SECCIÓN DE EQUIPO DE TRABAJO EN RECUADROS -->
+<section class="team-sec" id="equipo">
+  <div class="wrap">
+    <span class="sec-label">Colaboración y Roles</span>
+    <h2>Equipo de Trabajo</h2>
+    <p class="mut">La ejecución exitosa de los proyectos se sustentó en una estructura de roles complementarios, validación cruzada entre teoría y laboratorio, y comunicación técnica continua.</p>
+
+    <div class="team-grid">
+      <!-- TARJETA TUYA -->
+      <div class="member-card">
+        <div class="member-avatar">XM</div>
+        <div class="member-info">
+          <span class="member-role">Hardware, PCB &amp; Firmware</span>
+          <h3>Ximena del Rocío Moreno</h3>
+          <p>Diseño esquemático y ruteo de PCB, manufactura en CNC, programación de arquitectura PSoC 5LP, gestión DFM/BOM y estructuración de documentación técnica.</p>
+        </div>
+      </div>
+
+      <!-- TARJETA COMPAÑERO 1 (REEMPLAZA EL NOMBRE) -->
+      <div class="member-card">
+        <div class="member-avatar">C1</div>
+        <div class="member-info">
+          <span class="member-role">Análisis Circuital &amp; Validación</span>
+          <h3>[Nombre Compañero/a 1]</h3>
+          <p>Cálculo matemático de etapas analógicas, modelado de respuesta en frecuencia, montaje experimental en protoboard y toma de mediciones en osciloscopio.</p>
+        </div>
+      </div>
+
+      <!-- TARJETA COMPAÑERO 2 (REEMPLAZA EL NOMBRE) -->
+      <div class="member-card">
+        <div class="member-avatar">C2</div>
+        <div class="member-info">
+          <span class="member-role">Instrumentación &amp; Prototipado</span>
+          <h3>[Nombre Compañero/a 2]</h3>
+          <p>Ensamble y soldadura de componentes electrónicos, diseño de adaptadores mecánicos, calibración de sensores en banco y pruebas funcionales de campo.</p>
+        </div>
+      </div>
+
+      <!-- TARJETA COMPAÑERO 3 (SI SON 4, REEMPLAZA O ELIMINA ESTE BLOQUE) -->
+      <div class="member-card">
+        <div class="member-avatar">C3</div>
+        <div class="member-info">
+          <span class="member-role">Simulación &amp; Control de Calidad</span>
+          <h3>[Nombre Compañero/a 3]</h3>
+          <p>Verificación eléctrica mediante simulación previa al montaje, contraste de hojas de datos de fabricantes y validación cruzada de resultados experimentales.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN DE CONTACTO AL FINAL -->
+<section class="contact-sec" id="contacto">
+  <div class="wrap">
+    <span class="sec-label">Información de Contacto</span>
+    <h2>Conectemos</h2>
+    <p class="mut">Disponible para proyectos de diseño electrónico, sistemas embebidos y colaboración académica.</p>
+
+    <div class="contact-cards">
+      <div class="c-card">
+        <span>Correo Institucional / Personal</span>
+        <a href="mailto:ximenamoreno0524@gmail.com">ximenamoreno0524@gmail.com</a>
+      </div>
+      <div class="c-card">
+        <span>Teléfono</span>
+        <a href="tel:+573102985115">+57 310 298 5115</a>
+      </div>
+      <div class="c-card">
+        <span>Instagram</span>
+        <a href="https://instagram.com/ximena_moreno05" target="_blank" rel="noopener">@ximena_moreno05</a>
+      </div>
+      <div class="c-card">
+        <span>Institución</span>
+        <a href="https://www.usco.edu.co" target="_blank" rel="noopener">Universidad Surcolombiana</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Ximena del Rocío Moreno</strong> · Ingeniería Electrónica · Universidad Surcolombiana · Neiva, Huila</p>
+  </div>
+</footer>
+
+<!-- MODAL PARA VISUALIZACIÓN DE IMÁGENES -->
+<dialog id="lightbox">
+  <div class="modal-head">
+    <strong>Vista ampliada</strong>
+    <button class="close-btn" onclick="this.closest('dialog').close()">✕</button>
+  </div>
+  <div style="padding:12px;">
+    <img id="lb-img" src="" alt="">
+    <p id="lb-cap"></p>
+  </div>
+</dialog>
+
+<script>
+function switchTab(btn, panelId) {
+  const card = btn.closest('.proj-card');
+  card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  card.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+
+function openImg(btn) {
+  const img = btn.querySelector('img');
+  const cap = btn.parentElement.querySelector('figcaption');
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lb-img').src = img.src;
+  document.getElementById('lb-img').alt = img.alt;
+  document.getElementById('lb-cap').textContent = cap ? cap.textContent : '';
+  lb.showModal();
+}
+</script>
+</body>
+</html>
