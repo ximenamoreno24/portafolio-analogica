@@ -40,7 +40,7 @@ a { color: var(--acc); text-decoration: none; transition: all 0.2s ease; }
 a:hover { color: var(--acc-dark); }
 
 h1, h2, h3, h4 { font-weight: 700; line-height: 1.18; letter-spacing: -0.025em; margin: 0; }
-h1 { font-size: clamp(34px, 4.6vw, 50px); }
+h1 { font-size: clamp(34px, 4.6vw, 52px); }
 h2 { font-size: clamp(26px, 3.2vw, 34px); }
 h3 { font-size: 18px; margin-bottom: 8px; }
 p { margin: 0 0 14px; max-width: 68ch; }
@@ -87,17 +87,14 @@ nav .wrap {
 }
 .nav-cta:hover { background: var(--acc); color: #fff; }
 
-/* HERO */
+/* HERO SIN FOTO DE PERFIL */
 .hero-sec {
-  padding: clamp(48px, 7vw, 84px) 0;
+  padding: clamp(56px, 8vw, 96px) 0;
   background: var(--mint-grad);
   border-bottom: 1px solid var(--rule);
 }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 0.85fr;
-  gap: clamp(32px, 5vw, 64px);
-  align-items: center;
+.hero-single {
+  max-width: 780px;
 }
 .hero-kicker {
   display: inline-block;
@@ -108,10 +105,10 @@ nav .wrap {
 }
 .hero-title span { color: var(--acc); }
 .hero-desc {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--mut);
-  margin: 18px 0 28px;
-  max-width: 56ch;
+  margin: 18px 0 30px;
+  max-width: 60ch;
 }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn-primary {
@@ -140,42 +137,6 @@ nav .wrap {
   gap: 8px;
 }
 .btn-outline:hover { border-color: var(--acc); color: var(--acc); }
-
-.hero-visual {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-.foto-frame {
-  width: 100%;
-  max-width: 340px;
-  aspect-ratio: 4/5;
-  border-radius: 24px;
-  background: #ffffff;
-  border: 6px solid #ffffff;
-  box-shadow: var(--shadow-md);
-  display: grid;
-  place-items: center;
-  font-size: 64px;
-  font-weight: 700;
-  color: var(--acc);
-  overflow: hidden;
-}
-.foto-frame img { width: 100%; height: 100%; object-fit: cover; }
-
-.floating-pill {
-  position: absolute;
-  bottom: 20px;
-  left: -12px;
-  background: #ffffff;
-  border: 1px solid var(--rule);
-  border-radius: 14px;
-  padding: 12px 16px;
-  box-shadow: var(--shadow-md);
-  font-size: 13px;
-}
-.floating-pill strong { display: block; color: var(--ink); font-size: 14px; }
-.floating-pill span { color: var(--mut); }
 
 /* SECCIÓN SOBRE MÍ */
 .about-sec {
@@ -406,6 +367,7 @@ figcaption { font-size: 13px; color: var(--mut); padding: 10px 12px; line-height
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   display: flex;
   flex-direction: column;
+  color: inherit;
 }
 .member-card:hover {
   transform: translateY(-4px);
@@ -424,7 +386,6 @@ figcaption { font-size: 13px; color: var(--mut); padding: 10px 12px; line-height
   border-bottom: 1px solid var(--rule);
   overflow: hidden;
 }
-.member-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .member-info { padding: 20px; flex: 1; display: flex; flex-direction: column; }
 .member-role {
   font-size: 12px;
@@ -436,6 +397,16 @@ figcaption { font-size: 13px; color: var(--mut); padding: 10px 12px; line-height
 }
 .member-info h3 { font-size: 17px; margin-bottom: 8px; color: var(--ink); }
 .member-info p { font-size: 14px; color: var(--mut); margin: 0; line-height: 1.55; }
+.member-link-tag {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--acc-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.member-card:hover .member-link-tag { color: var(--acc); }
 
 /* SECCIÓN DE CONTACTO AL FINAL */
 .contact-sec {
@@ -445,7 +416,7 @@ figcaption { font-size: 13px; color: var(--mut); padding: 10px 12px; line-height
 }
 .contact-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
   margin-top: 24px;
 }
@@ -517,9 +488,7 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
 #lightbox p { padding: 14px 20px; margin: 0; font-size: 14px; text-align: center; color: var(--mut); }
 
 @media (max-width: 860px) {
-  .hero-grid, .about-grid, .two-col { grid-template-columns: 1fr; }
-  .hero-visual { order: -1; justify-content: flex-start; }
-  .foto-frame { max-width: 240px; }
+  .about-grid, .two-col { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -538,26 +507,16 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
   </div>
 </nav>
 
-<!-- PORTADA -->
+<!-- PORTADA SIN FOTO DE PERFIL -->
 <section class="hero-sec">
-  <div class="wrap hero-grid">
-    <div>
+  <div class="wrap">
+    <div class="hero-single">
       <span class="hero-kicker">Ingeniería Electrónica · Universidad Surcolombiana</span>
       <h1 class="hero-title">Diseño Electrónico, <span>Simulación &amp; Hardware</span> Prototipado.</h1>
       <p class="hero-desc">Desarrollo de sistemas analógicos y mixtos desde el modelado matemático y el análisis circuital hasta el diseño de PCB, manufactura CNC y sistemas embebidos en PSoC 5LP.</p>
       <div class="hero-actions">
         <a href="#proyectos" class="btn-primary">Explorar Proyectos →</a>
         <a href="#sobre-mi" class="btn-outline">Sobre mí</a>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="foto-frame" id="foto">
-        XM
-      </div>
-      <div class="floating-pill">
-        <strong>Sexto Semestre</strong>
-        <span>Neiva, Huila · Colombia</span>
       </div>
     </div>
   </div>
@@ -1006,7 +965,7 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
   </div>
 </main>
 
-<!-- SECCIÓN DE EQUIPO DE TRABAJO (COLABORACIÓN TRANSVERSAL) -->
+<!-- SECCIÓN DE EQUIPO DE TRABAJO -->
 <section class="team-sec" id="equipo">
   <div class="wrap">
     <span class="sec-label">Trabajo Colaborativo</span>
@@ -1023,14 +982,15 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
         </div>
       </div>
 
-      <div class="member-card">
+      <a href="https://nostec-dev.github.io/maker-projects/?v=5" target="_blank" rel="noopener" class="member-card">
         <div class="member-avatar">HL</div>
         <div class="member-info">
           <span class="member-role">Ingeniería Electrónica</span>
           <h3>Hugo Andrés Llanos</h3>
           <p>Apoyo transversal en el desarrollo de los proyectos, análisis técnico, validación experimental en laboratorio y consolidación de resultados.</p>
+          <span class="member-link-tag">Ver portafolio →</span>
         </div>
-      </div>
+      </a>
 
       <div class="member-card">
         <div class="member-avatar">DM</div>
@@ -1062,7 +1022,7 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
   </div>
 </section>
 
-<!-- SECCIÓN DE CONTACTO AL FINAL -->
+<!-- SECCIÓN DE CONTACTO AL FINAL (SIN INSTAGRAM) -->
 <section class="contact-sec" id="contacto">
   <div class="wrap">
     <span class="sec-label">Canales Directos</span>
@@ -1077,10 +1037,6 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
       <div class="c-card">
         <span>Teléfono</span>
         <a href="tel:+573102985115">+57 310 298 5115</a>
-      </div>
-      <div class="c-card">
-        <span>Instagram</span>
-        <a href="https://instagram.com/ximena_moreno05" target="_blank" rel="noopener">@ximena_moreno05</a>
       </div>
       <div class="c-card">
         <span>Institución</span>
