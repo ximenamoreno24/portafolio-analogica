@@ -87,7 +87,7 @@ nav .wrap {
 }
 .nav-cta:hover { background: var(--acc); color: #fff; }
 
-/* HERO (ESTILO REFERENCIA VISUAL) */
+/* HERO */
 .hero-sec {
   padding: clamp(48px, 7vw, 84px) 0;
   background: var(--mint-grad);
@@ -179,7 +179,7 @@ nav .wrap {
 
 /* SECCIÓN SOBRE MÍ */
 .about-sec {
-  padding: 64px 0;
+  padding: 64px 0 36px;
   background: var(--bg);
 }
 .about-grid {
@@ -216,7 +216,9 @@ nav .wrap {
 }
 
 /* TARJETAS RESUMEN DE INDICADORES */
-.metrics-sec { padding: 12px 0 48px; }
+.metrics-sec { padding: 24px 0 64px; }
+.metrics-head { margin-bottom: 24px; }
+.metrics-head p { color: var(--mut); margin-top: 8px; }
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -274,6 +276,7 @@ nav .wrap {
   margin-bottom: 10px;
 }
 
+.doc-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .btn-doc {
   display: inline-flex;
   align-items: center;
@@ -287,6 +290,20 @@ nav .wrap {
   box-shadow: 0 4px 12px rgba(76, 136, 121, 0.22);
 }
 .btn-doc:hover { background: var(--acc-dark); transform: translateY(-2px); color: #ffffff; }
+
+.btn-bitacora {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--acc-soft);
+  color: var(--acc-dark);
+  border: 1px solid var(--acc);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 12px;
+}
+.btn-bitacora:hover { background: var(--acc); color: #ffffff; transform: translateY(-2px); }
 
 .two-col {
   display: grid;
@@ -372,11 +389,11 @@ figcaption { font-size: 13px; color: var(--mut); padding: 10px 12px; line-height
 .refl-box h4 { font-size: 13px; color: var(--acc-dark); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
 .refl-box p { margin: 0; font-size: 15px; }
 
-/* SECCIÓN EQUIPO DE TRABAJO EN RECUADROS (TIPO TARJETAS DE PROYECTOS/IMÁGENES) */
+/* SECCIÓN EQUIPO DE TRABAJO EN RECUADROS */
 .team-sec { padding: 64px 0; background: var(--bg); }
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   margin-top: 28px;
 }
@@ -397,11 +414,11 @@ figcaption { font-size: 13px; color: var(--mut); padding: 10px 12px; line-height
 }
 .member-avatar {
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16/9;
   background: var(--mint-grad);
   display: grid;
   place-items: center;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--acc-dark);
   border-bottom: 1px solid var(--rule);
@@ -420,7 +437,7 @@ figcaption { font-size: 13px; color: var(--mut); padding: 10px 12px; line-height
 .member-info h3 { font-size: 17px; margin-bottom: 8px; color: var(--ink); }
 .member-info p { font-size: 14px; color: var(--mut); margin: 0; line-height: 1.55; }
 
-/* SECCIÓN DE CONTACTO AL FINAL (TARJETAS LIMPIAS COMO TU IMAGEN) */
+/* SECCIÓN DE CONTACTO AL FINAL */
 .contact-sec {
   padding: 64px 0;
   background: var(--bg-mint);
@@ -430,7 +447,7 @@ figcaption { font-size: 13px; color: var(--mut); padding: 10px 12px; line-height
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 18px;
-  margin-top: 28px;
+  margin-top: 24px;
 }
 .c-card {
   background: #ffffff;
@@ -521,13 +538,13 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
   </div>
 </nav>
 
-<!-- PORTADA LIMPIA SIN DATOS DE CONTACTO -->
+<!-- PORTADA -->
 <section class="hero-sec">
   <div class="wrap hero-grid">
     <div>
       <span class="hero-kicker">Ingeniería Electrónica · Universidad Surcolombiana</span>
       <h1 class="hero-title">Diseño Electrónico, <span>Simulación &amp; Hardware</span> Prototipado.</h1>
-      <p class="hero-desc">Portafolio técnico de proyectos en Electrónica Analógica III: desde el modelado matemático y análisis circuital hasta el diseño de PCB, manufactura CNC y sistemas embebidos en PSoC 5LP.</p>
+      <p class="hero-desc">Desarrollo de sistemas analógicos y mixtos desde el modelado matemático y el análisis circuital hasta el diseño de PCB, manufactura CNC y sistemas embebidos en PSoC 5LP.</p>
       <div class="hero-actions">
         <a href="#proyectos" class="btn-primary">Explorar Proyectos →</a>
         <a href="#sobre-mi" class="btn-outline">Sobre mí</a>
@@ -536,7 +553,6 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
 
     <div class="hero-visual">
       <div class="foto-frame" id="foto">
-        <!-- Si tienes foto, reemplaza XM por: <img src="img/perfil.jpg" alt="Ximena del Rocío Moreno"> -->
         XM
       </div>
       <div class="floating-pill">
@@ -573,41 +589,49 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
   </div>
 </section>
 
-<!-- TARJETAS DE INDICADORES CLAVE -->
+<!-- TARJETAS DE INDICADORES CLAVE CON ENCABEZADO -->
 <section class="metrics-sec" aria-label="Indicadores clave de diseño">
-  <div class="wrap metrics-grid">
-    <a class="metric-card" href="#calentamiento">
-      <small>Acondicionamiento Analógico</small>
-      <strong>Amplificador y generador con LM358</strong>
-      <div>
-        <div class="metric-val">292 kHz</div>
-        <em>Ancho de banda medido a ganancia 10 (meta ≥ 250 kHz)</em>
-      </div>
-    </a>
-    <a class="metric-card" href="#adc">
-      <small>Adquisición de Datos</small>
-      <strong>Latencia de conversión ADC en PSoC 5LP</strong>
-      <div>
-        <div class="metric-val">18,6 µs</div>
-        <em>Conversión SAR a 12 bits y 1 MHz medida en osciloscopio</em>
-      </div>
-    </a>
-    <a class="metric-card" href="#pmv">
-      <small>Prototipado Funcional (PMV)</small>
-      <strong>Shield de monitoreo de CO para PSoC 5LP</strong>
-      <div>
-        <div class="metric-val">+1,75 V</div>
-        <em>Excursión de señal ante presencia de gas con alerta visual</em>
-      </div>
-    </a>
-    <a class="metric-card" href="#gasshield">
-      <small>Diseño para Manufactura (DFM)</small>
-      <strong>GasShield 5LP optimizado para JLCPCB</strong>
-      <div>
-        <div class="metric-val">USD 15,65</div>
-        <em>Costo de ensamblaje SMD bajo presupuesto sin cupón</em>
-      </div>
-    </a>
+  <div class="wrap">
+    <div class="metrics-head">
+      <span class="sec-label">Síntesis de Desempeño</span>
+      <h2>Resultados e Indicadores Clave</h2>
+      <p>Métricas experimentales y de ingeniería obtenidas en cada etapa de desarrollo (haz clic en cualquier tarjeta para ir al proyecto correspondiente):</p>
+    </div>
+
+    <div class="metrics-grid">
+      <a class="metric-card" href="#calentamiento">
+        <small>Acondicionamiento Analógico</small>
+        <strong>Amplificador y generador con LM358</strong>
+        <div>
+          <div class="metric-val">292 kHz</div>
+          <em>Ancho de banda medido a ganancia 10 (meta ≥ 250 kHz)</em>
+        </div>
+      </a>
+      <a class="metric-card" href="#adc">
+        <small>Adquisición de Datos</small>
+        <strong>Latencia de conversión ADC en PSoC 5LP</strong>
+        <div>
+          <div class="metric-val">18,6 µs</div>
+          <em>Conversión SAR a 12 bits y 1 MHz medida en osciloscopio</em>
+        </div>
+      </a>
+      <a class="metric-card" href="#pmv">
+        <small>Prototipado Funcional (PMV)</small>
+        <strong>Shield de monitoreo de CO para PSoC 5LP</strong>
+        <div>
+          <div class="metric-val">+1,75 V</div>
+          <em>Excursión de señal ante presencia de gas con alerta visual</em>
+        </div>
+      </a>
+      <a class="metric-card" href="#gasshield">
+        <small>Diseño para Manufactura (DFM)</small>
+        <strong>GasShield 5LP optimizado para JLCPCB</strong>
+        <div>
+          <div class="metric-val">USD 15,65</div>
+          <em>Costo estimado de ensamblaje SMD bajo presupuesto sin cupón</em>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -622,8 +646,9 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
           <span class="proj-tag">Práctica de Caracterización Analógica</span>
           <h2>Amplificador de ganancia 10 y generador de funciones con LM358</h2>
         </div>
-        <!-- ENLACE AL DOCUMENTO PDF O GOOGLE DRIVE -->
-        <a href="docs/documentacion-lm358.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+        <div class="doc-actions">
+          <a href="docs/Calentamiento-de-proyectos.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+        </div>
       </div>
 
       <p>Caracterización experimental del amplificador operacional LM358 en dos configuraciones: una topología amplificadora con ganancia de voltaje de 10 y ancho de banda mínimo de 250 kHz, y un oscilador generador de ondas triangular y cuadrada basado en notas de aplicación del fabricante.</p>
@@ -718,7 +743,10 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
           <span class="proj-tag">Instrumentación y Sistemas Embebidos</span>
           <h2>ADC y potenciómetro: tiempo de conversión en la PSoC 5LP</h2>
         </div>
-        <a href="docs/documentacion-adc-psoc.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+        <div class="doc-actions">
+          <a href="docs/documentacion-adc-psoc.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+          <a href="docs/Bitacora-adc-psoc.pdf" target="_blank" rel="noopener" class="btn-bitacora">📓 Ver Bitácora</a>
+        </div>
       </div>
 
       <p>Caracterización temporal de los convertidores analógico-digitales integrados en la arquitectura PSoC 5LP (kit CY8CKIT-059). Se evaluó el tiempo real de conversión comparando la topología SAR (aproximaciones sucesivas) frente a la Delta-Sigma bajo distintas resoluciones y frecuencias de reloj.</p>
@@ -797,7 +825,10 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
           <span class="proj-tag">Desarrollo de Prototipo Funcional (PMV)</span>
           <h2>Shield de monitoreo de CO para PSoC 5LP</h2>
         </div>
-        <a href="docs/documentacion-shield-co.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+        <div class="doc-actions">
+          <a href="docs/documentacion-shield-co.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+          <a href="docs/BITACORA-shield-co.pdf" target="_blank" rel="noopener" class="btn-bitacora">📓 Ver Bitácora</a>
+        </div>
       </div>
 
       <p>Solución electrónica diseñada para el Laboratorio de Aguas de Ingeniería de Petróleos, donde los procesos de calcinación de biomasa generan monóxido de carbono (CO), un gas incoloro e inodoro de alto riesgo. Se desarrolló una tarjeta de expansión (shield) que gestiona el ciclo térmico de un sensor MQ-7, acondiciona su señal hacia el ADC de la PSoC 5LP y proporciona alerta visual mediante semáforo LED.</p>
@@ -900,16 +931,19 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
           <span class="proj-tag">Ingeniería de Producto y Diseño para Manufactura (DFM)</span>
           <h2>GasShield 5LP: optimización industrial para ensamblaje SMD</h2>
         </div>
-        <a href="docs/documentacion-gasshield.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+        <div class="doc-actions">
+          <a href="docs/documentacion-gasshield.pdf" target="_blank" rel="noopener" class="btn-doc">📄 Ver Documentación</a>
+          <a href="docs/Bitacora-gasshield.pdf" target="_blank" rel="noopener" class="btn-bitacora">📓 Ver Bitácora</a>
+        </div>
       </div>
 
-      <p>A partir del prototipo funcional validado en la etapa previa, se rediseñó la arquitectura electrónica para escalarla hacia un estándar de fabricación industrial de doble capa con ensamblaje automatizado SMD (JLCPCB), cumpliendo un techo presupuestal estricto de USD 20 por lote sin depender de cupones promocionales.</p>
+      <p>Tomando como base la tarjeta desarrollada y validada experimentalmente en la etapa del Producto Mínimo Viable (PMV), se ejecutó una fase de rediseño y mejora de ingeniería sobre el circuito impreso para prepararlo hacia un estándar de fabricación industrial de doble capa con ensamblaje automatizado SMD (JLCPCB). Esta etapa corresponde exclusivamente a la optimización de diseño, verificación de reglas eléctricas/físicas y análisis financiero DFM (aún sin envío a manufactura), logrando cumplir un techo presupuestal estricto de USD 20 por lote sin depender de cupones promocionales.</p>
 
       <div class="two-col">
         <dl class="spec-list">
           <div class="spec-item">
             <dt>Objetivo Técnico</dt>
-            <dd>Migrar el prototipo monocapa hacia una PCB profesional de dos capas con ensamblaje superficial (SMT), solventando limitaciones térmicas y de escalabilidad del diseño inicial.</dd>
+            <dd>Evolucionar el diseño de la placa monocapa del PMV hacia una arquitectura PCB profesional de dos capas lista para ensamblaje superficial (SMT), solventando limitaciones térmicas y de escalabilidad del prototipo inicial.</dd>
           </div>
           <div class="spec-item">
             <dt>Metas de Ingeniería</dt>
@@ -917,7 +951,7 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
               <ul>
                 <li>Verificación eléctrica (ERC) y de reglas de diseño (DRC) con cero errores.</li>
                 <li>Regulación de fase alta del calefactor en 5,0 ± 0,1 V mediante conmutación de baja caída.</li>
-                <li>Costo total de fabricación y ensamblaje inferior a USD 20 sin subsidios.</li>
+                <li>Costo estimado de fabricación y ensamblaje inferior a USD 20 sin subsidios.</li>
               </ul>
             </dd>
           </div>
@@ -926,7 +960,7 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
         <div class="aporte-box">
           <h3>Contribución Técnica</h3>
           <ul>
-            <li>Estructuración de la trazabilidad de ingeniería mediante una matriz de 24 modificaciones técnicas (M-01 a M-24), vinculando cada limitación del prototipo previo con su solución de diseño y evidencia de validación.</li>
+            <li>Estructuración de la trazabilidad de ingeniería mediante una matriz de 24 modificaciones técnicas (M-01 a M-24), vinculando cada limitación detectada en la placa del PMV con su mejora de diseño y evidencia de validación.</li>
             <li>Gestión de ingeniería de costos y análisis DFM en JLCPCB: optimización de lista de materiales (BOM), migración de componentes <i>Extended</i> a catálogo <i>Basic</i> y evaluación financiera entre las revisiones 2.0 y 2.1.</li>
           </ul>
         </div>
@@ -941,14 +975,14 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
         <ol class="steps">
           <li><b>Arquitectura Revisión 2.0:</b> Sustitución del BJT por MOSFET canal N AO3400A de baja resistencia R<sub>DS(on)</sub> para evitar caídas de tensión en fase alta, incorporación de segundo canal de sensado, zumbador piezoeléctrico, bus I2C para pantalla LCD, selector de modo y protección por fusible.</li>
           <li><b>Optimización de costos (Revisión 2.1):</b> El análisis de cotización reveló que los cargos de carga de alimentadores por piezas <i>Extended</i> representaban el 41 % del costo total (USD 29,98).</li>
-          <li><b>Estandarización BOM:</b> Reemplazo de componentes especiales por equivalentes del inventario <i>Basic</i> de JLCPCB: arreglo de tres resistores 0805 en paralelo para la etapa de potencia en fase baja, carga fija de 24,2 kΩ y bornera de alimentación VIN estándar, reduciendo el costo final a <b>USD 15,65</b>.</li>
+          <li><b>Estandarización BOM:</b> Reemplazo de componentes especiales por equivalentes del inventario <i>Basic</i> de JLCPCB: arreglo de tres resistores 0805 en paralelo para la etapa de potencia en fase baja, carga fija de 24,2 kΩ y bornera de alimentación VIN estándar, reduciendo el costo proyectado a <b>USD 15,65</b>.</li>
         </ol>
       </div>
 
       <div id="p4-res" class="tab-panel">
         <div class="tbl-wrap">
           <table>
-            <thead><tr><th>Criterio de Diseño</th><th class="n">Prototipo CNC (v1.0)</th><th class="n">Industrial (v2.0)</th><th class="n">Optimizada BOM (v2.1)</th></tr></thead>
+            <thead><tr><th>Criterio de Diseño</th><th class="n">Prototipo CNC (v1.0)</th><th class="n">Diseño Industrial (v2.0)</th><th class="n">Diseño Optimizado (v2.1)</th></tr></thead>
             <tbody>
               <tr><td>Tecnología de fabricación</td><td class="n">1 capa fresada</td><td class="n">2 capas FR-4</td><td class="n">2 capas FR-4</td></tr>
               <tr><td>Canales de monitoreo CO</td><td class="n">1 sensor</td><td class="n">2 sensores</td><td class="n">2 sensores</td></tr>
@@ -961,61 +995,67 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
       </div>
 
       <div class="gal">
-        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-esquematico.jpg" alt="Esquemático v2.1" loading="lazy"></button><figcaption>Esquemático final v2.1 con componentes estandarizados del catálogo Basic.</figcaption></figure>
-        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-pcb2d.jpg" alt="PCB 2D" loading="lazy"></button><figcaption>Ruteo de doble capa con planos de tierra y serigrafía industrial.</figcaption></figure>
-        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-3d.jpg" alt="Render 3D" loading="lazy"></button><figcaption>Modelo tridimensional del shield ensamblado.</figcaption></figure>
-        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-cotizacion.jpg" alt="Cotización JLCPCB" loading="lazy"></button><figcaption>Validación de costos en plataforma de manufactura JLCPCB (USD 15,65).</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-versiones.jpg" alt="Comparativa de versiones v2.0 y v2.1" loading="lazy"></button><figcaption>Evolución y comparativa técnica entre las revisiones de diseño v2.0 y v2.1.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-vin-mode.jpg" alt="Etapa de alimentación VIN y selector de modo" loading="lazy"></button><figcaption>Mejoras en la etapa de alimentación VIN y selección de modo operativo.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-serigrafia.jpg" alt="Diseño de serigrafía y capas" loading="lazy"></button><figcaption>Ruteo de doble capa con serigrafía industrial y planos de referencia.</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-gerber.jpg" alt="Verificación Gerber DFM" loading="lazy"></button><figcaption>Inspección de archivos Gerber y validación de manufacturabilidad (DFM).</figcaption></figure>
+        <figure class="fit"><button onclick="openImg(this)"><img src="img/p5-costos.jpg" alt="Análisis de costos BOM en JLCPCB" loading="lazy"></button><figcaption>Optimización financiera de lista de materiales (BOM) bajo presupuesto (USD 15,65).</figcaption></figure>
       </div>
     </article>
 
   </div>
 </main>
 
-<!-- SECCIÓN DE EQUIPO DE TRABAJO EN RECUADROS -->
+<!-- SECCIÓN DE EQUIPO DE TRABAJO (COLABORACIÓN TRANSVERSAL) -->
 <section class="team-sec" id="equipo">
   <div class="wrap">
-    <span class="sec-label">Colaboración y Roles</span>
+    <span class="sec-label">Trabajo Colaborativo</span>
     <h2>Equipo de Trabajo</h2>
-    <p class="mut">La ejecución exitosa de los proyectos se sustentó en una estructura de roles complementarios, validación cruzada entre teoría y laboratorio, y comunicación técnica continua.</p>
+    <p class="mut">Los proyectos presentados en este portafolio son el resultado de un esfuerzo conjunto en el que todos los integrantes participamos de manera transversal a lo largo de las distintas etapas de análisis, diseño, montaje, pruebas y documentación.</p>
 
     <div class="team-grid">
-      <!-- TARJETA TUYA -->
       <div class="member-card">
         <div class="member-avatar">XM</div>
         <div class="member-info">
-          <span class="member-role">Hardware, PCB &amp; Firmware</span>
+          <span class="member-role">Ingeniería Electrónica</span>
           <h3>Ximena del Rocío Moreno</h3>
-          <p>Diseño esquemático y ruteo de PCB, manufactura en CNC, programación de arquitectura PSoC 5LP, gestión DFM/BOM y estructuración de documentación técnica.</p>
+          <p>Participación integral en diseño esquemático y PCB, manufactura CNC, firmware en PSoC 5LP, gestión DFM y documentación técnica.</p>
         </div>
       </div>
 
-      <!-- TARJETA COMPAÑERO 1 (REEMPLAZA EL NOMBRE) -->
       <div class="member-card">
-        <div class="member-avatar">C1</div>
+        <div class="member-avatar">HL</div>
         <div class="member-info">
-          <span class="member-role">Análisis Circuital &amp; Validación</span>
-          <h3>[Nombre Compañero/a 1]</h3>
-          <p>Cálculo matemático de etapas analógicas, modelado de respuesta en frecuencia, montaje experimental en protoboard y toma de mediciones en osciloscopio.</p>
+          <span class="member-role">Ingeniería Electrónica</span>
+          <h3>Hugo Andrés Llanos</h3>
+          <p>Apoyo transversal en el desarrollo de los proyectos, análisis técnico, validación experimental en laboratorio y consolidación de resultados.</p>
         </div>
       </div>
 
-      <!-- TARJETA COMPAÑERO 2 (REEMPLAZA EL NOMBRE) -->
       <div class="member-card">
-        <div class="member-avatar">C2</div>
+        <div class="member-avatar">DM</div>
         <div class="member-info">
-          <span class="member-role">Instrumentación &amp; Prototipado</span>
-          <h3>[Nombre Compañero/a 2]</h3>
-          <p>Ensamble y soldadura de componentes electrónicos, diseño de adaptadores mecánicos, calibración de sensores en banco y pruebas funcionales de campo.</p>
+          <span class="member-role">Ingeniería Electrónica</span>
+          <h3>David Santiago Mondragón</h3>
+          <p>Colaboración continua en etapas de simulación, montaje de prototipos, pruebas funcionales en banco y verificación de parámetros.</p>
         </div>
       </div>
 
-      <!-- TARJETA COMPAÑERO 3 (SI SON 4, REEMPLAZA O ELIMINA ESTE BLOQUE) -->
       <div class="member-card">
-        <div class="member-avatar">C3</div>
+        <div class="member-avatar">JM</div>
         <div class="member-info">
-          <span class="member-role">Simulación &amp; Control de Calidad</span>
-          <h3>[Nombre Compañero/a 3]</h3>
-          <p>Verificación eléctrica mediante simulación previa al montaje, contraste de hojas de datos de fabricantes y validación cruzada de resultados experimentales.</p>
+          <span class="member-role">Ingeniería Electrónica</span>
+          <h3>Juan Sebastián Meneses</h3>
+          <p>Aporte conjunto en el proceso de diseño circuital, instrumentación, toma de mediciones y revisión técnica de entregables.</p>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-avatar">JQ</div>
+        <div class="member-info">
+          <span class="member-role">Ingeniería Electrónica</span>
+          <h3>Jhoan Sebastián Quiza</h3>
+          <p>Participación activa en las fases de implementación, ajuste de prototipos, pruebas de funcionamiento y soporte al desarrollo del equipo.</p>
         </div>
       </div>
     </div>
@@ -1025,8 +1065,8 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
 <!-- SECCIÓN DE CONTACTO AL FINAL -->
 <section class="contact-sec" id="contacto">
   <div class="wrap">
-    <span class="sec-label">Información de Contacto</span>
-    <h2>Conectemos</h2>
+    <span class="sec-label">Canales Directos</span>
+    <h2>Información de Contacto</h2>
     <p class="mut">Disponible para proyectos de diseño electrónico, sistemas embebidos y colaboración académica.</p>
 
     <div class="contact-cards">
@@ -1056,7 +1096,7 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
   </div>
 </footer>
 
-<!-- MODAL PARA VISUALIZACIÓN DE IMÁGENES -->
+<!-- LIGHTBOX -->
 <dialog id="lightbox">
   <div class="modal-head">
     <strong>Vista ampliada</strong>
