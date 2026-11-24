@@ -11,7 +11,7 @@
 :root {
   --bg: #ffffff;
   --bg-mint: #f2f8f6;
-  --mint-grad: linear-gradient(135deg, #ffffff 0%, #e7f3ef 55%, #d6ebe5 100%);
+  --mint-grad: linear-gradient(135deg, #ffffff 0%, #ebf5f2 55%, #dcf0ea 100%);
   --surface: #ffffff;
   --ink: #1b2422;
   --mut: #647470;
@@ -39,8 +39,8 @@ img { max-width: 100%; display: block; }
 a { color: var(--acc); text-decoration: none; transition: all 0.2s ease; }
 a:hover { color: var(--acc-dark); }
 
-h1, h2, h3, h4 { font-weight: 700; line-height: 1.18; letter-spacing: -0.025em; margin: 0; }
-h1 { font-size: clamp(34px, 4.6vw, 50px); }
+h1, h2, h3, h4 { font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0; }
+h1 { font-size: clamp(36px, 5vw, 56px); }
 h2 { font-size: clamp(26px, 3.2vw, 34px); }
 h3 { font-size: 18px; margin-bottom: 8px; }
 p { margin: 0 0 14px; max-width: 68ch; }
@@ -87,33 +87,66 @@ nav .wrap {
 }
 .nav-cta:hover { background: var(--acc); color: #fff; }
 
-/* HERO CON FOTO */
+/* HERO EDITORIAL CON TRAMA DE PUNTOS Y CHIPS */
 .hero-sec {
-  padding: clamp(48px, 7vw, 84px) 0;
-  background: var(--mint-grad);
+  padding: clamp(60px, 9vw, 104px) 0;
+  background-color: #f4faf8;
+  background-image:
+    radial-gradient(rgba(76, 136, 121, 0.22) 1.25px, transparent 1.25px),
+    var(--mint-grad);
+  background-size: 24px 24px, 100% 100%;
   border-bottom: 1px solid var(--rule);
 }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 0.85fr;
-  gap: clamp(32px, 5vw, 64px);
+.hero-single {
+  max-width: 860px;
+}
+.hero-badge-row {
+  display: inline-flex;
   align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.hero-badge {
+  background: var(--acc);
+  color: #ffffff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
 }
 .hero-kicker {
-  display: inline-block;
-  font-size: 15px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--acc-dark);
+}
+.hero-name {
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.hero-subtitle {
+  font-size: clamp(20px, 2.6vw, 26px);
   font-weight: 600;
   color: var(--acc);
-  margin-bottom: 12px;
+  line-height: 1.35;
+  margin-bottom: 20px;
 }
-.hero-title span { color: var(--acc); }
 .hero-desc {
-  font-size: 16px;
+  font-size: 16.5px;
   color: var(--mut);
-  margin: 18px 0 28px;
-  max-width: 56ch;
+  margin: 0 0 30px;
+  max-width: 62ch;
 }
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 34px;
+}
 .btn-primary {
   background: var(--acc);
   color: #ffffff;
@@ -141,41 +174,25 @@ nav .wrap {
 }
 .btn-outline:hover { border-color: var(--acc); color: var(--acc); }
 
-.hero-visual {
-  position: relative;
+.hero-tags {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-.foto-frame {
-  width: 100%;
-  max-width: 320px;
-  aspect-ratio: 4/5;
-  border-radius: 24px;
-  background: #ffffff;
-  border: 6px solid #ffffff;
-  box-shadow: var(--shadow-md);
-  display: grid;
-  place-items: center;
-  font-size: 64px;
-  font-weight: 700;
-  color: var(--acc);
-  overflow: hidden;
+.hero-tags li {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #cfe2dc;
+  color: var(--ink);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
 }
-.foto-frame img { width: 100%; height: 100%; object-fit: cover; }
-
-.floating-pill {
-  position: absolute;
-  bottom: 18px;
-  left: 0;
-  background: #ffffff;
-  border: 1px solid var(--rule);
-  border-radius: 14px;
-  padding: 12px 16px;
-  box-shadow: var(--shadow-md);
-  font-size: 13px;
-}
-.floating-pill strong { display: block; color: var(--ink); font-size: 14px; }
-.floating-pill span { color: var(--mut); }
 
 /* SECCIÓN SOBRE MÍ */
 .about-sec {
@@ -527,9 +544,7 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
 #lightbox p { padding: 14px 20px; margin: 0; font-size: 14px; text-align: center; color: var(--mut); }
 
 @media (max-width: 860px) {
-  .hero-grid, .about-grid, .two-col { grid-template-columns: 1fr; }
-  .hero-visual { order: -1; justify-content: flex-start; }
-  .foto-frame { max-width: 240px; }
+  .about-grid, .two-col { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -548,27 +563,29 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
   </div>
 </nav>
 
-<!-- PORTADA CON FOTO -->
+<!-- PORTADA EDITORIAL SIN FOTO (ESTILO INGENIERÍA) -->
 <section class="hero-sec">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="hero-kicker">Ingeniería Electrónica · Universidad Surcolombiana</span>
-      <h1 class="hero-title">Diseño Electrónico, <span>Simulación &amp; Hardware</span> Prototipado.</h1>
-      <p class="hero-desc">Desarrollo de sistemas analógicos y mixtos desde el modelado matemático y el análisis circuital hasta el diseño de PCB, manufactura CNC y sistemas embebidos en PSoC 5LP.</p>
+  <div class="wrap">
+    <div class="hero-single">
+      <div class="hero-badge-row">
+        <span class="hero-badge">XM</span>
+        <span class="hero-kicker">Ingeniería Electrónica · Universidad Surcolombiana</span>
+      </div>
+      <h1 class="hero-name">Ximena del Rocío Moreno</h1>
+      <div class="hero-subtitle">Diseño Electrónico, Simulación &amp; Hardware Prototipado</div>
+      <p class="hero-desc">Desarrollo de sistemas analógicos y mixtos de principio a fin: desde el modelado matemático y el análisis circuital hasta el diseño de PCB, manufactura CNC, DFM y sistemas embebidos en PSoC 5LP.</p>
       <div class="hero-actions">
         <a href="#proyectos" class="btn-primary">Explorar Proyectos →</a>
         <a href="#sobre-mi" class="btn-outline">Sobre mí</a>
       </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="foto-frame" id="foto">
-        <img src="img/perfil.jpeg" alt="Ximena del Rocío Moreno">
-      </div>
-      <div class="floating-pill">
-        <strong>Sexto Semestre</strong>
-        <span>Neiva, Huila · Colombia</span>
-      </div>
+      <ul class="hero-tags">
+        <li>PSoC 5LP · C</li>
+        <li>EasyEDA · PCB</li>
+        <li>Fresado CNC · FlatCAM</li>
+        <li>Multisim &amp; Proteus</li>
+        <li>MATLAB &amp; Simulink</li>
+        <li>DFM · JLCPCB</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1074,7 +1091,7 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
   </div>
 </section>
 
-<!-- SECCIÓN DE CONTACTO AL FINAL (SIN INSTAGRAM) -->
+<!-- SECCIÓN DE CONTACTO AL FINAL -->
 <section class="contact-sec" id="contacto">
   <div class="wrap">
     <span class="sec-label">Canales Directos</span>
