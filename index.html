@@ -728,7 +728,7 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
         <div class="proj-title-area">
           <span class="proj-tag">Electrónica Analógica II · Arquitectura Discreta</span>
           <h2>Diseño, construcción y caracterización de un amplificador operacional con transistores BJT</h2>
-          <p class="proj-summary">Implementación modular a nivel de transistores discretos (2N3904 y 2N3906) replicando la arquitectura interna de un op-amp clásico: par diferencial con carga activa, etapa VAS con compensación Miller y salida push-pull Clase AB.</p>
+          <p class="proj-summary">Construcción física de un amplificador operacional desde cero utilizando transistores discretos (2N3904 y 2N3906), replicando la arquitectura interna de un circuito integrado comercial para validar su desempeño real frente a los modelos teóricos.</p>
         </div>
         <div class="doc-actions">
           <button type="button" class="btn-toggle" onclick="toggleProject(this)">Ver detalles ↓</button>
@@ -740,57 +740,57 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
         <div class="two-col">
           <dl class="spec-list">
             <div class="spec-item">
-              <dt>Objetivo Técnico</dt>
-              <dd>Diseñar, construir y caracterizar un amplificador operacional funcional con transistores BJT discretos alimentado por fuentes simétricas (±5 V), validando su desempeño bajo realimentación negativa en configuraciones inversora y no inversora con ganancia nominal de 10.</dd>
+              <dt>Propósito del Proyecto</dt>
+              <dd>Dejar de tratar al amplificador operacional como una "caja negra" comercial, diseñando y construyendo cada una de sus etapas internas con componentes discretos alimentados a ±5 V para comprobar su comportamiento real en configuraciones inversora y no inversora con ganancia nominal de 10.</dd>
             </div>
             <div class="spec-item">
-              <dt>Bloques de la Arquitectura</dt>
+              <dt>Arquitectura Implementada</dt>
               <dd>
                 <ul>
-                  <li><b>Entrada diferencial:</b> Par NPN (Q1, Q2) polarizado por fuente de corriente de cola (espejo NPN Q5–Q6 de ≈ 422,7 µA) y carga activa PNP (Q3–Q4).</li>
-                  <li><b>Etapa de ganancia (VAS):</b> Transistor PNP (Q10) en emisor común con capacitor de compensación Miller de 100 pF.</li>
-                  <li><b>Etapa de salida Clase AB:</b> Par complementario push-pull (Q8/Q9) pre-polarizado con dos diodos 1N4148 para eliminar distorsión de cruce.</li>
+                  <li><b>Entrada diferencial:</b> Par de transistores NPN encargado de amplificar la diferencia entre entradas y rechazar ruido en modo común, estabilizado por una fuente de corriente constante (espejo de corriente de ≈ 422,7 µA) y carga activa PNP para maximizar la ganancia.</li>
+                  <li><b>Etapa de ganancia de tensión:</b> Amplificador en emisor común con compensación en frecuencia mediante efecto Miller (capacitor de 100 pF) para evitar oscilaciones a altas frecuencias.</li>
+                  <li><b>Etapa de salida Clase AB:</b> Par complementario push-pull pre-polarizado con dos diodos en serie para entregar corriente a la carga sin distorsión de cruce por cero.</li>
                 </ul>
               </dd>
             </div>
           </dl>
 
           <div class="aporte-box">
-            <h3>Contribución Técnica</h3>
+            <h3>Lo que se realizó</h3>
             <ul>
-              <li>Cálculo teórico del punto de operación estático (V<sub>CEQ</sub> e I<sub>CQ</sub>) de los espejos de corriente, el par diferencial y dimensionamiento de la red de realimentación negativa para ganancia A<sub>v</sub> = 10 (R<sub>f</sub> = 10 kΩ, R<sub>1</sub> = 1 kΩ).</li>
-              <li>Emparejamiento experimental de transistores 2N3904 (β ≈ 210) y 2N3906 (β ≈ 358) mediante medidor de componentes para minimizar desbalances de corriente y offset de salida.</li>
-              <li>Simulación en Multisim y caracterización dinámica en laboratorio (barridos en frecuencia, Slew Rate, saturación, offset DC y frecuencia de ganancia unitaria).</li>
+              <li>Dimensionamiento completo de la red de polarización estática (espejos de corriente y puntos de operación) y cálculo de la red de realimentación negativa para lograr una ganancia de tensión de 10.</li>
+              <li>Clasificación y emparejamiento manual de transistores 2N3904 (β ≈ 210) y 2N3906 (β ≈ 358) con medidor de componentes para garantizar simetría en la etapa diferencial y reducir el voltaje de offset.</li>
+              <li>Validación previa en simulación (Multisim), montaje físico en protoboard y caracterización experimental completa en laboratorio con osciloscopio y generador de señales.</li>
             </ul>
           </div>
         </div>
 
         <div class="tabs">
-          <button class="tab-btn active" onclick="switchTab(this, 'op-proc')">Proceso y Diseño</button>
-          <button class="tab-btn" onclick="switchTab(this, 'op-dc')">Polarización DC</button>
-          <button class="tab-btn" onclick="switchTab(this, 'op-ac')">Resultados Dinámicos (AC)</button>
+          <button class="tab-btn active" onclick="switchTab(this, 'op-proc')">Desarrollo del Proyecto</button>
+          <button class="tab-btn" onclick="switchTab(this, 'op-dc')">Validación de Polarización (DC)</button>
+          <button class="tab-btn" onclick="switchTab(this, 'op-ac')">Desempeño Experimental (AC)</button>
         </div>
 
         <div id="op-proc" class="tab-panel active">
           <ol class="steps">
-            <li><b>Polarización y espejos de corriente:</b> Mediante R<sub>1</sub> = 22 kΩ entre +5 V y −5 V se fijó una corriente de referencia de 422,72 µA en Q5–Q6, dividiéndose simétricamente en ≈ 211,36 µA por cada rama del par diferencial Q1–Q2.</li>
-            <li><b>Simulación en Multisim:</b> Validación en lazo cerrado obteniendo ganancia exacta de 10 (V<sub>out</sub> = 1,99 V ante V<sub>in</sub> = 199 mV) tanto en configuración inversora como no inversora.</li>
-            <li><b>Selección de componentes y montaje:</b> Clasificación de transistores BJT por β similar antes del ensamblaje en protoboard con alimentación simétrica de ±5 V para reducir asimetrías térmicas y de offset.</li>
-            <li><b>Pruebas de caracterización:</b> Medición punto a punto de polarización DC en cada transistor y evaluación AC con osciloscopio Rigol y generador de funciones (onda senoidal y cuadrada).</li>
+            <li><b>Cálculo del punto de operación:</b> Se diseñó el espejo de corriente maestro para fijar una corriente de referencia de 422,72 µA, logrando que se repartiera de forma simétrica (≈ 211,36 µA por rama) en el par diferencial de entrada.</li>
+            <li><b>Simulación circuital:</b> Antes del montaje físico se verificó el circuito en Multisim bajo realimentación negativa, comprobando una ganancia exacta de 10 tanto en modo inversor como no inversor sin distorsión de salida.</li>
+            <li><b>Emparejamiento de transistores y montaje:</b> Dado que en componentes discretos no existe la simetría de una oblea integrada, se seleccionaron transistores con ganancias (β) equivalentes antes de ensamblar el prototipo alimentado con ±5 V.</li>
+            <li><b>Caracterización en banco de laboratorio:</b> Se midieron los voltajes y corrientes en reposo de cada etapa y se evaluó la respuesta dinámica mediante barridos de frecuencia, límites de saturación, velocidad de respuesta (Slew Rate) y voltaje de offset.</li>
           </ol>
         </div>
 
         <div id="op-dc" class="tab-panel">
           <div class="tbl-wrap">
             <table>
-              <thead><tr><th>Transistor</th><th class="n">V<sub>CEQ</sub> Teórico</th><th class="n">V<sub>CEQ</sub> Simulado</th><th class="n">V<sub>CEQ</sub> Medido</th><th class="n">I<sub>CQ</sub> Teórica</th><th class="n">I<sub>CQ</sub> Medida</th></tr></thead>
+              <thead><tr><th>Etapa del Circuito</th><th class="n">V<sub>CE</sub> Teórico</th><th class="n">V<sub>CE</sub> Simulado</th><th class="n">V<sub>CE</sub> Medido</th><th class="n">Corriente Teórica</th><th class="n">Corriente Medida</th></tr></thead>
               <tbody>
-                <tr><td>Q1 (Par dif. NPN)</td><td class="n">5,04 V</td><td class="n">4,96 V</td><td class="n">4,81 V</td><td class="n">211,36 µA</td><td class="n">202 µA</td></tr>
-                <tr><td>Q2 (Par dif. NPN)</td><td class="n">5,08 V</td><td class="n">4,98 V</td><td class="n">4,95 V</td><td class="n">211,36 µA</td><td class="n">201 µA</td></tr>
-                <tr><td>Q3 (Carga activa PNP)</td><td class="n">−0,66 V</td><td class="n">−666,2 mV</td><td class="n">−621 mV</td><td class="n">211,36 µA</td><td class="n">210 µA</td></tr>
-                <tr><td>Q4 (Carga activa PNP)</td><td class="n">−0,62 V</td><td class="n">−639,1 mV</td><td class="n">−634 mV</td><td class="n">211,36 µA</td><td class="n">209 µA</td></tr>
-                <tr><td>Q5 (Espejo cola NPN)</td><td class="n">0,70 V</td><td class="n">642,8 mV</td><td class="n">601 mV</td><td class="n">422,72 µA</td><td class="n">435 µA</td></tr>
-                <tr><td>Q6 (Fuente cola NPN)</td><td class="n">4,30 V</td><td class="n">4,37 V</td><td class="n">4,20 V</td><td class="n">422,72 µA</td><td class="n">410 µA</td></tr>
+                <tr><td>Par diferencial (rama inversora)</td><td class="n">5,04 V</td><td class="n">4,96 V</td><td class="n">4,81 V</td><td class="n">211,36 µA</td><td class="n">202 µA</td></tr>
+                <tr><td>Par diferencial (rama no inversora)</td><td class="n">5,08 V</td><td class="n">4,98 V</td><td class="n">4,95 V</td><td class="n">211,36 µA</td><td class="n">201 µA</td></tr>
+                <tr><td>Carga activa PNP (referencia)</td><td class="n">−0,66 V</td><td class="n">−666,2 mV</td><td class="n">−621 mV</td><td class="n">211,36 µA</td><td class="n">210 µA</td></tr>
+                <tr><td>Carga activa PNP (espejo)</td><td class="n">−0,62 V</td><td class="n">−639,1 mV</td><td class="n">−634 mV</td><td class="n">211,36 µA</td><td class="n">209 µA</td></tr>
+                <tr><td>Espejo maestro (referencia)</td><td class="n">0,70 V</td><td class="n">642,8 mV</td><td class="n">601 mV</td><td class="n">422,72 µA</td><td class="n">435 µA</td></tr>
+                <tr><td>Fuente de corriente de cola</td><td class="n">4,30 V</td><td class="n">4,37 V</td><td class="n">4,20 V</td><td class="n">422,72 µA</td><td class="n">410 µA</td></tr>
               </tbody>
             </table>
           </div>
@@ -804,8 +804,8 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
                 <tr><td>Ganancia de tensión medida (A<sub>v</sub>)</td><td class="n">12,9 (banda media)</td><td class="n">≈ 10,8 – 13,0</td></tr>
                 <tr><td>Frecuencia de corte superior (-3 dB)</td><td class="n">807 kHz</td><td class="n">641 kHz</td></tr>
                 <tr><td>Frecuencia de ganancia unitaria</td><td class="n">≈ 1,14 MHz (A<sub>v</sub>=0,95)</td><td class="n">5,38 MHz</td></tr>
-                <tr><td>Slew Rate (SR)</td><td class="n">1,406 V/µs</td><td class="n">0,529 V/µs</td></tr>
-                <tr><td>Tensión de saturación (V<sub>pp</sub> salida)</td><td class="n">8,96 V<sub>pp</sub> (con 1,16 V<sub>pp</sub> in)</td><td class="n">9,04 V<sub>pp</sub> (con 1,02 V<sub>pp</sub> in)</td></tr>
+                <tr><td>Slew Rate (velocidad de respuesta)</td><td class="n">1,406 V/µs</td><td class="n">0,529 V/µs</td></tr>
+                <tr><td>Límite de saturación (salida V<sub>pp</sub>)</td><td class="n">8,96 V<sub>pp</sub> (con 1,16 V<sub>pp</sub> in)</td><td class="n">9,04 V<sub>pp</sub> (con 1,02 V<sub>pp</sub> in)</td></tr>
                 <tr><td>Voltaje de Offset de salida DC</td><td class="n">19,2 mV</td><td class="n">20,0 mV</td></tr>
               </tbody>
             </table>
@@ -813,15 +813,15 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
         </div>
 
         <div class="gal">
-          <figure class="fit"><button onclick="openImg(this)"><img src="img/opamp-simulacion.png" alt="Esquemático completo en Multisim" loading="lazy"></button><figcaption>Simulación completa en Multisim con par diferencial, VAS y etapa Clase AB.</figcaption></figure>
-          <figure><button onclick="openImg(this)"><img src="img/opamp-protoboard.png" alt="Implementación discreta en protoboard" loading="lazy"></button><figcaption>Montaje físico en protoboard con transistores 2N3904 y 2N3906 emparejados por β.</figcaption></figure>
-          <figure><button onclick="openImg(this)"><img src="img/opamp-osc-inv.png" alt="Señal amplificada inversora" loading="lazy"></button><figcaption>Respuesta experimental en configuración inversora (desfase de 180° y ganancia ≈ 12,9).</figcaption></figure>
-          <figure><button onclick="openImg(this)"><img src="img/opamp-slewrate.png" alt="Medición de Slew Rate" loading="lazy"></button><figcaption>Medición experimental del Slew Rate (1,406 V/µs) mediante respuesta a onda cuadrada.</figcaption></figure>
+          <figure class="fit"><button onclick="openImg(this)"><img src="img/opamp-simulacion.jpeg" alt="Esquemático completo en Multisim" loading="lazy"></button><figcaption>Simulación completa en Multisim integrando entrada diferencial, etapa de ganancia y salida Clase AB.</figcaption></figure>
+          <figure><button onclick="openImg(this)"><img src="img/opamp-protoboard.jpeg" alt="Implementación discreta en protoboard" loading="lazy"></button><figcaption>Montaje físico en protoboard con transistores 2N3904 y 2N3906 emparejados por ganancia.</figcaption></figure>
+          <figure><button onclick="openImg(this)"><img src="img/opamp-osc-inv.jpeg" alt="Señal amplificada inversora" loading="lazy"></button><figcaption>Respuesta experimental en configuración inversora (desfase de 180° y ganancia ≈ 12,9).</figcaption></figure>
+          <figure><button onclick="openImg(this)"><img src="img/opamp-slewrate.jpeg" alt="Medición de Slew Rate" loading="lazy"></button><figcaption>Medición experimental del Slew Rate (1,406 V/µs) mediante respuesta a onda cuadrada.</figcaption></figure>
         </div>
 
         <div class="refl-box">
-          <h4>Análisis Crítico</h4>
-          <p>A diferencia de un circuito integrado monolítico donde todos los transistores comparten oblea y temperatura, en un diseño discreto la dispersión natural de β y V<sub>BE</sub> genera el offset de salida observado (≈ 19–20 mV). Asimismo, a frecuencias superiores a 100 kHz, la combinación entre el capacitor de compensación Miller (100 pF) y las capacitancias parásitas del protoboard delimita el Slew Rate y la linealidad de gran señal.</p>
+          <h4>Aprendizaje Técnico</h4>
+          <p>Construir el amplificador con componentes individuales permitió comprobar en la práctica por qué los circuitos integrados se fabrican en una misma oblea de silicio: cualquier mínima diferencia entre transistores discretos se traduce directamente en voltaje de offset a la salida (≈ 19–20 mV). Además, se evidenció cómo las capacitancias parásitas del protoboard junto con el capacitor de compensación Miller condicionan el Slew Rate por encima de los 100 kHz.</p>
         </div>
       </div>
     </article>
@@ -860,11 +860,11 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
           </dl>
 
           <div class="aporte-box">
-            <h3>Contribución Técnica</h3>
+            <h3>Lo que se realizó</h3>
             <ul>
-              <li>Análisis comparativo de hojas de datos (Texas Instruments: 0,7 MHz; onsemi: 1,0 MHz; STMicroelectronics: 1,1 MHz) y modelado del ancho de banda en cascada (criterio de Jaeger y Blalock).</li>
-              <li>Sustentación teórica para descartar la etapa única (limitada a 70–110 kHz) y definir una arquitectura de tres etapas no inversoras con ganancia individual ≈ 2,15.</li>
-              <li>Estructuración del plan de pruebas y distribución técnica de actividades en el equipo.</li>
+              <li>Análisis comparativo de hojas de datos de distintos fabricantes (Texas Instruments: 0,7 MHz; onsemi: 1,0 MHz; STMicroelectronics: 1,1 MHz) y modelado del ancho de banda en cascada.</li>
+              <li>Sustentación teórica para descartar la etapa única (limitada a 70–110 kHz) y diseñar una arquitectura de tres etapas no inversoras con ganancia individual ≈ 2,15.</li>
+              <li>Estructuración del plan de pruebas en laboratorio y ejecución de barridos de frecuencia con osciloscopio.</li>
             </ul>
           </div>
         </div>
@@ -878,9 +878,9 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
         <div id="p1-proc" class="tab-panel active">
           <ol class="steps">
             <li><b>Análisis teórico:</b> Con una etapa única de ganancia 10, el ancho de banda queda restringido a 70–110 kHz; a 250 kHz la ganancia en lazo abierto cae a 2,8–4,4.</li>
-            <li><b>Dimensionamiento:</b> Implementación de tres etapas no inversoras con R<sub>g</sub> = 10 kΩ y resistencias de realimentación R<sub>f</sub> de 12 kΩ, 12 kΩ y 10,68 kΩ (10 kΩ + 680 Ω), logrando una ganancia teórica de 10,01.</li>
+            <li><b>Dimensionamiento:</b> Implementación de tres etapas no inversoras en cascada con resistencias de realimentación calculadas para lograr una ganancia total teórica de 10,01.</li>
             <li><b>Barrido en frecuencia:</b> Excitación con señal sinusoidal de 20 mV<sub>pp</sub> desde 1 kHz hasta 500 kHz, registrando amplitud mediante cursores manuales.</li>
-            <li><b>Caracterización del oscilador:</b> Montaje con V<sub>ref</sub> = 5 V mediante divisor resistivo y ajuste de frecuencia con potenciómetro de 1 MΩ.</li>
+            <li><b>Caracterización del oscilador:</b> Montaje con referencia de 5 V mediante divisor resistivo y ajuste continuo de frecuencia mediante potenciómetro.</li>
           </ol>
         </div>
 
@@ -960,10 +960,10 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
           </dl>
 
           <div class="aporte-box">
-            <h3>Contribución Técnica</h3>
+            <h3>Lo que se realizó</h3>
             <ul>
-              <li>Desarrollo completo del diseño hardware/firmware en PSoC Creator: configuración del <span class="mono">TopDesign</span> para el ADC SAR disparado por PWM (pulsos de 2 µs cada 100 µs), arquitectura Delta-Sigma y programación en lenguaje C (<span class="mono">main.c</span>).</li>
-              <li>Estandarización del protocolo de medición temporal: enrutamiento de señales internas SOC y EOC hacia pines físicos para captura mediante cursores y función <span class="mono">Delay(f-r)</span> en resoluciones altas.</li>
+              <li>Desarrollo completo del diseño hardware/firmware en PSoC Creator: configuración de los bloques internos para el ADC SAR disparado por PWM (pulsos de 2 µs cada 100 µs), arquitectura Delta-Sigma y programación en lenguaje C.</li>
+              <li>Estandarización del protocolo de medición temporal: enrutamiento de señales internas de inicio y fin de conversión hacia pines físicos para captura directa en osciloscopio.</li>
             </ul>
           </div>
         </div>
@@ -1035,17 +1035,17 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
               <dt>Requisitos de Diseño</dt>
               <dd>
                 <ul>
-                  <li><b>R1:</b> Etapa de potencia externa de 5 V independiente del microcontrolador.</li>
-                  <li><b>R2:</b> Conmutación térmica del calefactor: 5 V durante 60 s (purga) y 1,4 V durante 90 s (sensado).</li>
-                  <li><b>R3:</b> Variación de voltaje mínima de 0,5 V ante exposición a monóxido de carbono.</li>
-                  <li><b>R4:</b> Sistema de indicación visual escalonado (verde, amarillo, rojo).</li>
+                  <li><b>Alimentación autónoma:</b> Etapa de potencia externa de 5 V independiente del microcontrolador.</li>
+                  <li><b>Ciclo térmico:</b> Conmutación del calefactor entre 5 V durante 60 s (purga) y 1,4 V durante 90 s (sensado).</li>
+                  <li><b>Sensibilidad:</b> Variación de voltaje mínima de 0,5 V ante exposición a monóxido de carbono.</li>
+                  <li><b>Alerta visual:</b> Sistema de indicación escalonado mediante semáforo LED (verde, amarillo, rojo).</li>
                 </ul>
               </dd>
             </div>
           </dl>
 
           <div class="aporte-box">
-            <h3>Contribución Técnica</h3>
+            <h3>Lo que se realizó</h3>
             <ul>
               <li>Diseño esquemático en EasyEDA y ruteo completo de tarjeta impresa monocapa (80 × 50 mm), optimizando ancho de pistas (0,8 mm) y aislamiento para maquinado CNC.</li>
               <li>Manufactura integral de la PCB: generación de archivos Gerber, procesamiento CAM en FlatCAM, control numérico en Mach3 (fresado de aislamiento con herramienta de 0,1 mm a 30° y 45 perforaciones de 0,75 mm).</li>
@@ -1062,10 +1062,10 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
 
         <div id="p3-proc" class="tab-panel active">
           <ol class="steps">
-            <li><b>Selección de topología de potencia:</b> Se descartó el regulador lineal LM317 (requiere V<sub>in</sub> > 7 V) y la modulación PWM directa (induce ruido de conmutación en el ADC). Se implementó una etapa con transistor BJT 2N2222A y resistor limitador de 82 Ω que forma un divisor resistivo con los 33 Ω del calefactor para fijar ≈ 1,43 V en fase baja.</li>
+            <li><b>Selección de topología de potencia:</b> Se descartó el regulador lineal LM317 (requiere V<sub>in</sub> > 7 V) y la modulación PWM directa (induce ruido de conmutación en el ADC). Se implementó una etapa de conmutación con transistor BJT 2N2222A y resistencia limitadora para fijar ≈ 1,43 V en fase baja.</li>
             <li><b>Validación en protoboard:</b> Línea base estable en aire limpio entre 0,925 V y 0,941 V; excursión hasta 3,230 V ante exposición controlada con activación inmediata de alerta roja.</li>
             <li><b>Fabricación de baquela:</b> Fresado CNC de placa monocapa, soldadura de componentes e integración de zócalo adaptador impreso en 3D para mantenimiento del sensor.</li>
-            <li><b>Calibración y firmware:</b> Ajuste de resistencia base R<sub>0</sub> = R<sub>s</sub>(aire)/27,5 según curva de sensibilidad del fabricante, rutina de autocalibración inicial y umbrales de alerta alineados con directrices de la OMS (30 ppm alerta preventiva, 87 ppm alerta crítica).</li>
+            <li><b>Calibración y firmware:</b> Ajuste de resistencia base según curva de sensibilidad del fabricante, rutina de autocalibración inicial y umbrales de alerta alineados con directrices de la OMS (30 ppm alerta preventiva, 87 ppm alerta crítica).</li>
           </ol>
         </div>
 
@@ -1074,10 +1074,10 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
             <table>
               <thead><tr><th>Incidencia Detectada</th><th>Causa Raíz</th><th>Acción Correctiva</th></tr></thead>
               <tbody>
-                <tr><td>Indicador verde encendido permanentemente en protoboard</td><td>Referencia de emisor del transistor Q1 flotante</td><td>Conexión sólida del nodo de emisor al plano de tierra (GND)</td></tr>
-                <tr><td>Lectura inicial de ≈ 99 ppm en atmósfera limpia</td><td>Asunción de R<sub>0</sub> = R<sub>s</sub> en aire sin factor de escala de hoja de datos</td><td>Incorporación del factor de normalización R<sub>0</sub> = R<sub>s</sub>(aire)/27,5</td></tr>
+                <tr><td>Indicador verde encendido permanentemente en protoboard</td><td>Referencia de emisor del transistor de conmutación flotante</td><td>Conexión sólida del nodo de emisor al plano de tierra (GND)</td></tr>
+                <tr><td>Lectura inicial de ≈ 99 ppm en atmósfera limpia</td><td>Asunción de resistencia base igual en aire sin factor de escala de hoja de datos</td><td>Incorporación del factor de normalización del fabricante (÷ 27,5)</td></tr>
                 <tr><td>Saturación en alerta amarilla sin alcanzar umbral rojo en pruebas</td><td>Umbrales iniciales (35 y 100 ppm) poco sensibles para prototipo sin gas patrón</td><td>Ajuste a umbrales normativos OMS (30 ppm y 87 ppm)</td></tr>
-                <tr><td>Atenuación temporal de sensibilidad tras recubrimiento protector</td><td>Adsorción de solventes de laca dieléctrica en la malla catalítica del MQ-7</td><td>Ciclo térmico de curado y protocolo de barnizado previo al montaje del sensor</td></tr>
+                <tr><td>Atenuación temporal de sensibilidad tras recubrimiento protector</td><td>Adsorción de solventes de laca dieléctrica en la malla catalítica del sensor</td><td>Ciclo térmico de curado y protocolo de barnizado previo al montaje del sensor</td></tr>
               </tbody>
             </table>
           </div>
@@ -1086,14 +1086,14 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
         <div id="p3-res" class="tab-panel">
           <div class="tbl-wrap">
             <table>
-              <thead><tr><th>Requisito</th><th>Parámetro Evaluado</th><th class="n">Especificación</th><th class="n">Medición PCB</th></tr></thead>
+              <thead><tr><th>Criterio</th><th>Parámetro Evaluado</th><th class="n">Especificación</th><th class="n">Medición PCB</th></tr></thead>
               <tbody>
-                <tr><td>R1</td><td>Consumo de corriente (purga / sensado)</td><td class="n">≤ 200 mA</td><td class="n">140,2 / 47,5 mA</td></tr>
-                <tr><td>R2</td><td>Tensión calefactor fase alta</td><td class="n">4,7 ± 0,3 V</td><td class="n">4,59 V</td></tr>
-                <tr><td>R2</td><td>Tensión calefactor fase baja</td><td class="n">1,4 ± 0,1 V</td><td class="n">1,39 V</td></tr>
-                <tr><td>R2</td><td>Temporización de ciclo térmico</td><td class="n">60 s / 90 s</td><td class="n">≈ 60 s / ≈ 90 s</td></tr>
-                <tr><td>R3</td><td>Excursión de voltaje ante gas</td><td class="n">≥ 0,5 V</td><td class="n">+1,75 V</td></tr>
-                <tr><td>R4</td><td>Activación de semáforo de alerta</td><td class="n">Transición a rojo</td><td class="n">Activación en ≈ 10 s</td></tr>
+                <tr><td>Consumo</td><td>Corriente de operación (purga / sensado)</td><td class="n">≤ 200 mA</td><td class="n">140,2 / 47,5 mA</td></tr>
+                <tr><td>Calefactor</td><td>Tensión en fase alta (purga)</td><td class="n">4,7 ± 0,3 V</td><td class="n">4,59 V</td></tr>
+                <tr><td>Calefactor</td><td>Tensión en fase baja (sensado)</td><td class="n">1,4 ± 0,1 V</td><td class="n">1,39 V</td></tr>
+                <tr><td>Ciclo térmico</td><td>Temporización purga / sensado</td><td class="n">60 s / 90 s</td><td class="n">≈ 60 s / ≈ 90 s</td></tr>
+                <tr><td>Sensibilidad</td><td>Excursión de voltaje ante gas</td><td class="n">≥ 0,5 V</td><td class="n">+1,75 V</td></tr>
+                <tr><td>Alerta visual</td><td>Activación de semáforo LED</td><td class="n">Transición a rojo</td><td class="n">Activación en ≈ 10 s</td></tr>
               </tbody>
             </table>
           </div>
@@ -1152,10 +1152,10 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
           </dl>
 
           <div class="aporte-box">
-            <h3>Contribución Técnica</h3>
+            <h3>Lo que se realizó</h3>
             <ul>
-              <li>Estructuración de la trazabilidad de ingeniería mediante una matriz de 24 modificaciones técnicas (M-01 a M-24), vinculando cada limitación detectada en la placa del PMV con su mejora de diseño y evidencia de validación.</li>
-              <li>Gestión de ingeniería de costos y análisis DFM en JLCPCB: optimización de lista de materiales (BOM), migración de componentes <i>Extended</i> a catálogo <i>Basic</i> y evaluación financiera entre las revisiones 2.0 y 2.1.</li>
+              <li>Estructuración de la trazabilidad de ingeniería mediante una matriz de 24 mejoras técnicas, vinculando cada limitación detectada en la placa del PMV con su solución de rediseño y evidencia de validación.</li>
+              <li>Gestión de ingeniería de costos y análisis DFM en JLCPCB: optimización de lista de materiales (BOM), migración de componentes especiales (<i>Extended</i>) a catálogo estándar (<i>Basic</i>) y evaluación financiera entre revisiones.</li>
             </ul>
           </div>
         </div>
@@ -1167,9 +1167,9 @@ dialog::backdrop { background: rgba(15, 25, 22, 0.72); backdrop-filter: blur(4px
 
         <div id="p4-proc" class="tab-panel active">
           <ol class="steps">
-            <li><b>Arquitectura Revisión 2.0:</b> Sustitución del BJT por MOSFET canal N AO3400A de baja resistencia R<sub>DS(on)</sub> para evitar caídas de tensión en fase alta, incorporación de segundo canal de sensado, zumbador piezoeléctrico, bus I2C para pantalla LCD, selector de modo y protección por fusible.</li>
+            <li><b>Arquitectura Revisión 2.0:</b> Sustitución del transistor BJT por un MOSFET canal N de baja resistencia interna para evitar caídas de tensión en fase alta, incorporación de segundo canal de sensado, zumbador piezoeléctrico, bus I2C para pantalla LCD, selector de modo y protección por fusible.</li>
             <li><b>Optimización de costos (Revisión 2.1):</b> El análisis de cotización reveló que los cargos de carga de alimentadores por piezas <i>Extended</i> representaban el 41 % del costo total (USD 29,98).</li>
-            <li><b>Estandarización BOM:</b> Reemplazo de componentes especiales por equivalentes del inventario <i>Basic</i> de JLCPCB: arreglo de tres resistores 0805 en paralelo para la etapa de potencia en fase baja, carga fija de 24,2 kΩ y bornera de alimentación VIN estándar, reduciendo el costo proyectado a <b>USD 15,65</b>.</li>
+            <li><b>Estandarización BOM:</b> Reemplazo de componentes especiales por equivalentes del inventario estándar (<i>Basic</i>) de JLCPCB: arreglo de tres resistores SMD en paralelo para la etapa de potencia en fase baja, divisor fijo calibrado y bornera de alimentación estándar, reduciendo el costo proyectado a <b>USD 15,65</b>.</li>
           </ol>
         </div>
 
